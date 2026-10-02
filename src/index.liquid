@@ -1,0 +1,54 @@
+---
+layout: layouts/base.liquid
+body_class: page-home
+---
+{%- assign t = i18n[site.lang] -%}
+{%- assign featured = collections.projects | where: "data.featured", true -%}
+{%- assign count = featured | size -%}
+
+<h1 class="visually-hidden">{{ site.name }}, {{ site.role }}</h1>
+
+<section class="hero wrap" aria-roledescription="carousel" aria-label="{{ t.featured_projects }}">
+  <div class="hero__slides">
+    {%- for project in featured %}
+    <div class="hero__slide{% if forloop.first %} is-active{% endif %}" id="slide-{{ forloop.index }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} / {{ count }}"{% unless forloop.first %} inert{% endunless %}>
+      <a class="hero__media" href="{{ project.url }}" tabindex="-1" aria-hidden="true">{% hero project, forloop.index0 %}</a>
+      <div class="hero__text">
+        <p class="hero__count">{{ forloop.index | prepend: "00" | slice: -2, 2 }} <span>/ {{ count | prepend: "00" | slice: -2, 2 }}</span></p>
+        <h2 class="hero__title"><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
+        <p class="hero__subtitle">{{ project.data.subtitle }}, {{ project.data.year }}</p>
+        <a class="hero__more" href="{{ project.url }}" tabindex="-1">{{ t.view_project }} →</a>
+      </div>
+    </div>
+    {%- endfor %}
+  </div>
+  {%- if count > 1 %}
+  <div class="hero__controls">
+  <button type="button" class="hero__toggle" aria-pressed="false" aria-label="{{ t.pause_slideshow }}"
+          data-pause="{{ t.pause_slideshow }}" data-play="{{ t.play_slideshow }}">
+    <span class="hero__toggle-icon" aria-hidden="true"></span>
+  </button>
+  <div class="hero__dots" role="group" aria-label="{{ t.slide }}">
+    {%- for project in featured %}
+    <button type="button" class="hero__dot" aria-controls="slide-{{ forloop.index }}" aria-label="{{ t.slide }} {{ forloop.index }}: {{ project.data.title }}"{% if forloop.first %} aria-current="true"{% endif %}><span></span></button>
+    {%- endfor %}
+  </div>
+  </div>
+  {%- endif %}
+</section>
+
+<div class="intro wrap">
+  <p class="intro__text">{{ site.intro }}</p>
+</div>
+
+<section class="work wrap wrap--wide" aria-labelledby="work-title">
+  <div class="section-head">
+    <h2 id="work-title" class="section-title">{{ t.selected_work }}</h2>
+    <a class="section-link" href="/portfolio/">{{ t.all_projects }} →</a>
+  </div>
+  <ul class="cards">
+    {%- for project in collections.projects %}
+    {% include "partials/project-card.liquid" %}
+    {%- endfor %}
+  </ul>
+</section>

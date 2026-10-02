@@ -1,0 +1,57 @@
+{%- assign t = i18n[site.lang] -%}
+{%- if title -%}
+  {%- assign page_title = title | append: " — " | append: site.name -%}
+{%- else -%}
+  {%- assign page_title = site.name | append: " — " | append: site.role -%}
+{%- endif -%}
+{%- assign page_description = description | default: site.description | strip_newlines | strip -%}
+{%- assign canonical = page.url | absoluteUrl: site.url -%}
+{%- if cover -%}
+  {%- capture og_path %}{% ogImage cover, page.inputPath %}{% endcapture -%}
+{%- else -%}
+  {%- assign og_path = "/assets/img/og-default.jpg" -%}
+{%- endif -%}
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {%- if noindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f4f3ef">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <meta property="og:type" content="{% if layout == 'layouts/project.liquid' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta property="og:title" content="{{ title | default: page_title }}">
+  <meta property="og:description" content="{{ page_description | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ og_path | strip | absoluteUrl: site.url }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="preload" href="/assets/fonts/geograph-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module" src="/assets/js/main.js"></script>
+  {%- if page.url == "/" %}
+  {% include "partials/jsonld.liquid" %}
+  {%- endif %}
+</head>
+<body class="{{ body_class }}">
+  <a class="skip-link" href="#main">{{ t.skip }}</a>
+  {% include "partials/header.liquid" %}
+  <main id="main" tabindex="-1">
+    {{ content }}
+  </main>
+  {% include "partials/footer.liquid" %}
+</body>
+</html>

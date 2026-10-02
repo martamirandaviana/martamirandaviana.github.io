@@ -1,0 +1,12 @@
+---
+layout: layouts/base.liquid
+---
+<div class="page">
+  <header class="page-head wrap">
+    <h1 class="page-title">{{ title }}</h1>
+    {%- if lead %}
+    <p class="page-lead">{{ lead }}</p>
+    {%- endif %}
+  </header>
+  {{ content }}
+</div>

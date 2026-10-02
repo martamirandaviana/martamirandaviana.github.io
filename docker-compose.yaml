@@ -1,9 +1,30 @@
+# Local preview without installing Node:
+#   docker compose up            then open http://localhost:8080
+#   docker compose run --rm shots   screenshots of every page into screenshots/
+#   docker compose run --rm test    run the automatic tests
 services:
-  jekyll:
-    image: jekyll/jekyll
+  site:
+    image: node:24
+    working_dir: /app
+    user: node
     volumes:
-      - .:/srv/jekyll
+      - .:/app
     ports:
-      - "4000:4000"
-      - "35729:35729"
-    command: jekyll serve --host 0.0.0.0 --livereload
+      - "8080:8080"
+    command: sh -c "npm ci --no-audit --no-fund && npx @11ty/eleventy --serve --port=8080"
+
+  shots:
+    image: mcr.microsoft.com/playwright:v1.63.0-noble
+    working_dir: /app
+    volumes:
+      - .:/app
+    profiles: [tools]
+    command: sh -c "npm ci --no-audit --no-fund && npm run shots"
+
+  test:
+    image: mcr.microsoft.com/playwright:v1.63.0-noble
+    working_dir: /app
+    volumes:
+      - .:/app
+    profiles: [tools]
+    command: sh -c "npm ci --no-audit --no-fund && npm test"

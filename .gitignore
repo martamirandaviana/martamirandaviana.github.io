@@ -1,1 +1,11 @@
+# Build output and caches
 _site/
+.cache/
+node_modules/
+
+# Screenshots from `npm run shots`
+screenshots/
+
+.DS_Store
+test-results/
+playwright-report/

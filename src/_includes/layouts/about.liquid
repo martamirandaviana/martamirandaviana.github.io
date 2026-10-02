@@ -1,0 +1,35 @@
+---
+layout: layouts/base.liquid
+---
+<div class="about wrap">
+  <header class="about__head">
+    <h1 class="page-title">{{ title }}</h1>
+  </header>
+  <figure class="about__portrait">
+    {% picture portrait, portrait_alt, "(min-width: 60em) 30vw, 100vw", "gallery", "", true %}
+  </figure>
+  <div class="about__bio prose">
+    {{ content }}
+  </div>
+</div>
+
+<div class="cv wrap">
+  {%- for section in cv %}
+  <section class="cv__section" aria-labelledby="cv-{{ forloop.index }}">
+    <h2 class="cv__title" id="cv-{{ forloop.index }}">{{ section.title }}</h2>
+    <ul class="cv__list">
+      {%- for entry in section.entries %}
+      <li class="cv__entry">
+        <span class="cv__years">{{ entry.years }}</span>
+        <div class="cv__text">
+          <p>{{ entry.text | md }}</p>
+          {%- if entry.note %}
+          <p class="cv__note">{{ entry.note | md }}</p>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+</div>

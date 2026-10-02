@@ -1,0 +1,11 @@
+<li class="card">
+  <a class="card__link" href="{{ project.url }}">
+    <div class="card__media">{% cover project, "(min-width: 80em) 30vw, (min-width: 40em) 46vw, 100vw" %}</div>
+    <div class="card__meta">
+      {%- assign h = card_heading | default: "h3" -%}
+      <{{ h }} class="card__title">{{ project.data.title }}</{{ h }}>
+      <span class="card__year">{{ project.data.year }}</span>
+      <p class="card__subtitle">{{ project.data.subtitle }}</p>
+    </div>
+  </a>
+</li>

@@ -1,0 +1,27 @@
+{
+  "name": "mrt-arch",
+  "private": true,
+  "description": "Portfolio website of Marta Maçães Viana, architect. https://mrt-arch.com",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "check": "node scripts/check.mjs",
+    "shots": "node scripts/shots.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-img": "^7.0.0",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "1.63.0",
+    "html-validate": "^11.16.1",
+    "markdown-it": "^15.0.2",
+    "playwright": "1.63.0",
+    "yaml": "^2.9.1"
+  }
+}

@@ -1,0 +1,59 @@
+# For each pull request: build the site, run the checks and the tests, and
+# make screenshots of every page on phone, laptop and large desktop screens.
+# The screenshots (and the test report, if a test fails) are attached to the
+# workflow run (Actions → the run → Artifacts).
+name: Preview
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - uses: actions/cache@v6
+        with:
+          path: |
+            .cache
+            _site/img
+          key: images-${{ hashFiles('src/**/*.jpg', 'src/**/*.jpeg', 'src/**/*.png', 'src/**/*.webp', 'eleventy.config.js') }}
+          restore-keys: images-
+
+      - run: npx playwright install --with-deps chromium-headless-shell
+
+      - name: Check HTML and links
+        run: npm run check
+
+      - name: Tests (behaviour, accessibility, layout)
+        run: npm test
+
+      - name: Screenshots
+        if: ${{ !cancelled() }}
+        run: npm run shots -- --no-build
+
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: screenshots
+          path: screenshots/
+          retention-days: 14
+
+      - uses: actions/upload-artifact@v7
+        if: ${{ failure() }}
+        with:
+          name: test-report
+          path: playwright-report/
+          retention-days: 14

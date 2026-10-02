@@ -1,0 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.name | json }},
+  "jobTitle": "Architect",
+  "url": {{ site.url | json }},
+  "email": {{ site.email | prepend: "mailto:" | json }},
+  "image": {{ "/assets/img/icon-512.png" | absoluteUrl: site.url | json }},
+  "address": { "@type": "PostalAddress", "addressCountry": "PT" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Faculty of Architecture, University of Porto" },
+    { "@type": "CollegeOrUniversity", "name": "KTH Royal Institute of Technology" }
+  ],
+  "sameAs": [
+    {%- assign first = true -%}
+    {%- for s in site.social -%}
+      {%- if s[1] -%}{% unless first %},{% endunless %}
+    {{ s[1] | json }}{%- assign first = false -%}{%- endif -%}
+    {%- endfor %}
+  ]
+}
+</script>

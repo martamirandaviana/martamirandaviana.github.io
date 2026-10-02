@@ -1,0 +1,67 @@
+---
+layout: layouts/base.liquid
+---
+{%- assign t = i18n[site.lang] -%}
+{%- assign projects = collections.projects -%}
+{%- for p in projects -%}
+  {%- if p.url == page.url -%}
+    {%- assign index = forloop.index0 -%}
+    {%- assign number = forloop.index -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign count = projects | size -%}
+{%- assign prev_index = index | minus: 1 -%}
+{%- assign next_index = index | plus: 1 -%}
+{%- if prev_index < 0 %}{% assign prev_index = count | minus: 1 %}{% endif -%}
+{%- if next_index >= count %}{% assign next_index = 0 %}{% endif -%}
+{%- assign prev = projects[prev_index] -%}
+{%- assign next = projects[next_index] -%}
+
+<article class="project">
+  <header class="project-head wrap">
+    <p class="project-head__index"><a href="/portfolio/">{{ t.portfolio }}</a> <span aria-hidden="true">/</span> {{ number | prepend: "00" | slice: -2, 2 }}</p>
+    <h1 class="project-head__title">{{ title }}</h1>
+    {%- if subtitle %}
+    <p class="project-head__subtitle">{{ subtitle }}</p>
+    {%- endif %}
+  </header>
+
+  <div class="project-body wrap">
+    <dl class="facts">
+      {%- if year %}<div><dt>{{ t.year }}</dt><dd>{{ year }}</dd></div>{% endif %}
+      {%- if location %}<div><dt>{{ t.location }}</dt><dd>{{ location }}</dd></div>{% endif %}
+      {%- if type %}<div><dt>{{ t.type }}</dt><dd>{{ type }}</dd></div>{% endif %}
+      {%- if award %}<div><dt>{{ t.award }}</dt><dd>{{ award }}</dd></div>{% endif %}
+      {%- if collaborators %}<div><dt>{{ t.collaborators }}</dt><dd>{{ collaborators }}</dd></div>{% endif %}
+      {%- if photography %}<div><dt>{{ t.photography }}</dt><dd>{{ photography }}</dd></div>{% endif %}
+    </dl>
+    <div class="prose project-text">
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="project-gallery wrap wrap--wide">
+    {% gallery gallery, page.inputPath %}
+  </div>
+
+  <nav class="project-nav wrap" aria-label="{{ t.portfolio }}">
+    <a class="project-nav__link project-nav__link--prev" href="{{ prev.url }}" rel="prev">
+      <span class="project-nav__label">← {{ t.previous_project }}</span>
+      <span class="project-nav__title">{{ prev.data.title }}</span>
+    </a>
+    <a class="project-nav__all" href="/portfolio/">{{ t.all_projects }}</a>
+    <a class="project-nav__link project-nav__link--next" href="{{ next.url }}" rel="next">
+      <span class="project-nav__label">{{ t.next_project }} →</span>
+      <span class="project-nav__title">{{ next.data.title }}</span>
+    </a>
+  </nav>
+</article>
+
+<dialog class="lightbox" aria-label="{{ t.image_viewer }}">
+  <figure class="lightbox__figure">
+    <figcaption class="lightbox__count" aria-live="polite"></figcaption>
+  </figure>
+  <button class="lightbox__btn lightbox__close" type="button" aria-label="{{ t.close }}"><span aria-hidden="true">×</span></button>
+  <button class="lightbox__btn lightbox__prev" type="button" aria-label="{{ t.previous_image }}"><span aria-hidden="true">←</span></button>
+  <button class="lightbox__btn lightbox__next" type="button" aria-label="{{ t.next_image }}"><span aria-hidden="true">→</span></button>
+</dialog>

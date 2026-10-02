@@ -1,0 +1,59 @@
+# Build the site with Eleventy and publish it to GitHub Pages.
+# Runs on every push to main. In the repository settings, set
+# Settings → Pages → Source to "GitHub Actions".
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # Keep processed images between builds, so only new photos are encoded.
+      - uses: actions/cache@v6
+        with:
+          path: |
+            .cache
+            _site/img
+          key: images-${{ hashFiles('src/**/*.jpg', 'src/**/*.jpeg', 'src/**/*.png', 'src/**/*.webp', 'eleventy.config.js') }}
+          restore-keys: images-
+
+      - run: npm run build
+
+      # Do not publish a site with invalid HTML or broken links.
+      - run: npm run check -- --no-build
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,39 @@
+# Global settings for the website.
+
+name: Marta Maçães Viana
+short_name: MRT
+role: Architecture
+url: https://mrt-arch.com
+lang: en
+locale: en_GB
+
+# Default text for search engines and link previews.
+description: >-
+  Marta Maçães Viana is an architect and researcher based in Portugal.
+  Projects, competitions and full-scale installations.
+
+# Short text under the hero on the home page.
+intro: >-
+  Marta Maçães Viana is an architect and researcher based in Portugal.
+  Her work explores the full scale as a tool for experimentation,
+  participation and the relationship between architecture and the city.
+
+email: mviana@arq.up.pt
+location: Portugal
+
+# Social links. Leave a value empty to hide its icon.
+social:
+  instagram: https://www.instagram.com/martagaiaoviana/
+  linkedin: https://www.linkedin.com/in/marta-macaes-viana/
+  orcid: https://orcid.org/0000-0002-9994-7610
+
+# Contact form endpoint (Formspree).
+form_endpoint: https://formspree.io/f/myzdypow
+
+navigation:
+  - key: portfolio
+    url: /portfolio/
+  - key: about
+    url: /about/
+  - key: contact
+    url: /contact/
