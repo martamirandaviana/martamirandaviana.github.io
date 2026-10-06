@@ -1,0 +1,21 @@
+---
+pagination:
+  data: redirects
+  size: 1
+  alias: redirect
+permalink: "{{ redirect.from }}index.html"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.name }}</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ redirect.to | absoluteUrl: site.url }}">
+  <meta http-equiv="refresh" content="0; url={{ redirect.to }}">
+</head>
+<body>
+  <p>{{ i18n[site.lang].redirect_text }} <a href="{{ redirect.to }}">{{ redirect.to | absoluteUrl: site.url }}</a>.</p>
+</body>
+</html>

@@ -1,0 +1,82 @@
+# The CV on the About page.
+# Each section has a title and a list of entries.
+# "years" is the left column. "text" is the right column (Markdown is allowed:
+# **bold**, *italic*, [link text](https://…)). "note" is an optional second line.
+
+- title: Professional experience
+  entries:
+    - years: 2025 – Present
+      text: "**PhD Candidate**, Faculty of Architecture, University of Porto"
+    - years: 2025 – Present
+      text: "**Researcher**, Centro de Estudos Nuno Portas, Faculty of Architecture, University of Porto"
+    - years: 2025 – Present
+      text: "**Auxiliary Teacher**, “Implantação de Obra e Estrutura”, CTeSP Intelligent and Sustainable Construction, IPCA"
+    - years: 2024 – Present
+      text: Member of the Portuguese Architecture Collegiate, n.º 29360
+    - years: 2024 – 2025
+      text: "**BIM Architect**, Horizonte Architecture, Porto, Portugal"
+      note: Worked with Revit and Enscape on design and visualization.
+    - years: 2022 – 2024
+      text: "**Architect**, Pedro Ferreira Architecture Studio, Braga, Portugal"
+    - years: "2023"
+      text: Honorable Mention in the International Competition [“Wildlife Pavilions”](https://www.terravivacompetitions.com/wildlife-pavilions-competition-results-2023/)
+    - years: 2021 – 2024
+      text: Freelance Illustrator, Creation_byMarta
+    - years: 2021 – 2022
+      text: "Researcher: 1 to 1 Scale and Architecture Disclosure. Scientific article for UOU Journal ([ORCID](https://orcid.org/0000-0002-9994-7610))"
+
+- title: Publications
+  entries:
+    - years: "2022"
+      text: "*“The Potential of the 1:1 Scale: Devices for Experimentation and Communication in Architecture.”* Master’s thesis, Faculty of Architecture, University of Porto."
+      note: "[hdl.handle.net/10216/143091](https://hdl.handle.net/10216/143091)"
+    - years: "2021"
+      text: "Neiva, Ana; Viana, Marta; Gomes, João Nuno. “[Petites Folies – Other Landscapes over Douro](https://doi.org/10.14198/uou.2021.2.08).” *UOU Scientific Journal*, No. 2."
+      note: "DOI: [10.14198/uou.2021.2.08](https://doi.org/10.14198/uou.2021.2.08)"
+
+- title: Politics and volunteering
+  entries:
+    - years: 2024 – Present
+      text: Vice President of the Youth Political Party in Esposende, Braga, Portugal
+    - years: 2025 – Present
+      text: District Coordinator for Local Government Affairs, Youth Political Organization, Braga, Portugal
+      note: Coordinated a multidisciplinary team responsible for developing a Youth Manifesto and delivering political training programmes, including policy development and financial governance.
+    - years: 2016 – Present
+      text: Member of the Youth Political Party in Esposende, Braga, Portugal
+    - years: 2023 – 2026
+      text: Member of the Esposende Municipal Committee, Esposende, Braga, Portugal
+    - years: 2022 – 2023
+      text: Member of VOU University Volunteer, Creative Department, Porto, Portugal
+    - years: "2022"
+      text: Volunteer at Missão País 22, Monitoring Primary School in Seia, Guarda, Portugal
+    - years: 2019 – 2020
+      text: Member of the Student Association in the Sports Department, FAUP, Portugal
+    - years: "2018"
+      text: Volunteer at Just a Change Association, Porto, Portugal
+    - years: "2018"
+      text: Social Monitoring Project at Nossa Senhora do Rosário School, Porto, Portugal
+    - years: "2017"
+      text: Volunteer at Open House Porto, Portugal
+    - years: 2015 – 2016
+      text: Participant in the Mentoring Project at Henrique Medina High School
+    - years: "2015"
+      text: Volunteer at “Agosto em Lazer”, no. 5, Youth Pastoral Activities of Irmãos S. João de Deus, Barcelos, Braga, Portugal
+
+- title: Education and training
+  entries:
+    - years: "2025"
+      text: Explored digital tools, including GitHub, and collaborated with Andreu Matoses in developing the *mrt-arch* website
+    - years: "2024"
+      text: REVIT for Architecture, Academia Luso Cuanza, Autodesk Certified
+    - years: 2016 – 2022
+      text: Integrated Master’s in Architecture, FAUP (GPA 17). Thesis 19/20
+    - years: 2020 – 2021
+      text: ERASMUS+ Programme, KTH Royal Institute of Technology. Swedish A1
+    - years: "2020"
+      text: English Certification, Level C1, Master School Porto
+    - years: "2018"
+      text: ARCHICAD 22 Training, Introduction to BIM, Cláudio Lima, Lda
+    - years: 2013 – 2016
+      text: Visual Arts Course, Henrique Medina High School, Esposende (GPA 19)
+    - years: 2007 – 2012
+      text: Organ Course, Classic Format, Esposende

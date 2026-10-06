@@ -1,0 +1,56 @@
+# All interface text. To add Portuguese later, copy the "en" block to "pt"
+# and translate the values.
+
+en:
+  skip: Skip to content
+  menu: Menu
+  close: Close
+  home: Home
+  portfolio: Portfolio
+  about: About
+  contact: Contact
+  selected_work: Selected work
+  featured_projects: Featured projects
+  all_projects: All projects
+  view_project: View project
+  year: Year
+  location: Location
+  type: Type
+  award: Award
+  collaborators: Collaborators
+  photography: Photography
+  previous_project: Previous project
+  next_project: Next project
+  back_to_portfolio: Back to portfolio
+  slide: Slide
+  pause_slideshow: Pause slideshow
+  play_slideshow: Play slideshow
+  previous_image: Previous image
+  next_image: Next image
+  image_viewer: Image viewer
+  get_in_touch: Get in touch
+  contact_intro: For projects, collaborations or research, write a message or send an email.
+  email: Email
+  send_message: Send a message
+  name: Name
+  company: Company or organisation
+  subject: Subject
+  subject_placeholder: Select a subject
+  subjects:
+    - Project inquiry
+    - Collaboration
+    - Academic or research
+    - Consultation
+    - Other
+  message: Message
+  message_placeholder: Describe your project or question.
+  privacy: I agree that my personal data is used to answer this message.
+  required: required
+  send: Send message
+  sending: Sending…
+  sent: Thank you. Your message was sent. Marta will reply as soon as possible.
+  send_error: The message was not sent. Please try again, or write to
+  not_found_title: Page not found
+  not_found_text: This page does not exist. It may have moved.
+  go_home: Go to the home page
+  redirect_text: This page moved to

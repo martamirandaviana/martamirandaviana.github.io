@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__name">
+      <span class="site-footer__mark">{{ "logo-mrt.svg" | svg }}</span>
+      © {{ "now" | year }} {{ site.name }}
+    </p>
+    <ul class="site-footer__links">
+      <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+      {%- if site.social.instagram %}<li><a href="{{ site.social.instagram }}" rel="me">Instagram</a></li>{% endif %}
+      {%- if site.social.linkedin %}<li><a href="{{ site.social.linkedin }}" rel="me">LinkedIn</a></li>{% endif %}
+      {%- if site.social.orcid %}<li><a href="{{ site.social.orcid }}" rel="me">ORCID</a></li>{% endif %}
+    </ul>
+  </div>
+</footer>

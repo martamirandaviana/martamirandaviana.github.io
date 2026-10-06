@@ -1,0 +1,83 @@
+---
+layout: layouts/base.liquid
+title: Contact
+permalink: /contact/
+body_class: page-contact
+description: Contact Marta Maçães Viana for architecture projects, collaborations and research.
+---
+{%- assign t = i18n[site.lang] -%}
+<div class="contact wrap">
+  <header class="contact__head">
+    <h1 class="page-title">{{ t.get_in_touch }}</h1>
+    <p class="page-lead">{{ t.contact_intro }}</p>
+  </header>
+
+  <dl class="contact__details">
+    <div>
+      <dt>{{ t.email }}</dt>
+      <dd><a class="contact__email" href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+    </div>
+    <div>
+      <dt>{{ t.location }}</dt>
+      <dd>{{ site.location }}</dd>
+    </div>
+    {%- if site.social.linkedin %}
+    <div>
+      <dt>LinkedIn</dt>
+      <dd><a href="{{ site.social.linkedin }}">marta-macaes-viana</a></dd>
+    </div>
+    {%- endif %}
+    {%- if site.social.instagram %}
+    <div>
+      <dt>Instagram</dt>
+      <dd><a href="{{ site.social.instagram }}">@martagaiaoviana</a></dd>
+    </div>
+    {%- endif %}
+  </dl>
+
+  <section class="contact__form" aria-labelledby="form-title">
+    <h2 id="form-title" class="section-title">{{ t.send_message }}</h2>
+    <form class="form" action="{{ site.form_endpoint }}" method="POST" data-contact-form
+          data-sending="{{ t.sending }}" data-sent="{{ t.sent }}" data-error="{{ t.send_error }} {{ site.email }}.">
+      <div class="form__row">
+        <div class="field">
+          <label for="name">{{ t.name }} <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">{{ t.email }} <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="field">
+          <label for="company">{{ t.company }}</label>
+          <input type="text" id="company" name="company" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="subject">{{ t.subject }} <span class="req" aria-hidden="true">*</span></label>
+          <select id="subject" name="subject" required>
+            <option value="">{{ t.subject_placeholder }}</option>
+            {%- for s in t.subjects %}
+            <option>{{ s }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">{{ t.message }} <span class="req" aria-hidden="true">*</span></label>
+        <textarea id="message" name="message" rows="7" required placeholder="{{ t.message_placeholder }}"></textarea>
+      </div>
+      <div class="field field--check">
+        <input type="checkbox" id="privacy" name="privacy" required>
+        <label for="privacy">{{ t.privacy }} <span class="req" aria-hidden="true">*</span></label>
+      </div>
+      {%- comment %} Spam trap for bots. Formspree ignores messages that fill it. {% endcomment %}
+      <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form__actions">
+        <button class="button" type="submit">{{ t.send }} →</button>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+</div>

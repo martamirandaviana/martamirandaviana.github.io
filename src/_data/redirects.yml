@@ -1,0 +1,14 @@
+# Old URLs (from the previous website) and their new location.
+# The build makes a small page at each old URL that sends the visitor on.
+- from: /portfolio/01-Apartment_6021/
+  to: /portfolio/apartment-6021/
+- from: /portfolio/02-Sea_House/
+  to: /portfolio/sea-house/
+- from: /portfolio/03-petites-folies/
+  to: /portfolio/petites-folies/
+- from: /portfolio/04-wildlife-pavilions/
+  to: /portfolio/wildlife-pavilions/
+- from: /portfolio/05-FAUP_Projecthtml/
+  to: /portfolio/faup-project/
+- from: /portfolio/06-KTH_Project/
+  to: /portfolio/kth-project/

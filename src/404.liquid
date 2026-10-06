@@ -1,0 +1,12 @@
+---
+layout: layouts/page.liquid
+title: Page not found
+permalink: /404.html
+noindex: true
+eleventyExcludeFromCollections: true
+---
+{%- assign t = i18n[site.lang] -%}
+<div class="wrap prose">
+  <p>{{ t.not_found_text }}</p>
+  <p><a href="/">{{ t.go_home }} →</a></p>
+</div>

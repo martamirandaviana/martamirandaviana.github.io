@@ -1,0 +1,15 @@
+---
+layout: layouts/page.liquid
+title: Portfolio
+permalink: /portfolio/
+body_class: page-portfolio
+description: Projects by Marta Maçães Viana. Renovations, competitions, full-scale installations and academic work.
+---
+<div class="wrap wrap--wide">
+  {%- assign card_heading = "h2" %}
+  <ul class="cards cards--index">
+    {%- for project in collections.projects %}
+    {% include "partials/project-card.liquid" %}
+    {%- endfor %}
+  </ul>
+</div>
