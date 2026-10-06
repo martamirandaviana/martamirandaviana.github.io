@@ -10,7 +10,6 @@
     <header class="research-theme-head">
       <p class="research-theme-number">{{ theme.number | escape }}</p>
       <h2 id="theme-title-{{ theme.id | escape }}">{{ theme.title | escape }}</h2>
-      <p>{{ theme.description | escape }}</p>
       {% if theme.thumbnail.image %}
       <figure class="research-theme-thumbnail">
         <div class="research-theme-visual{% if theme.thumbnail.secondary_image %} research-theme-visual--composite{% endif %}">
