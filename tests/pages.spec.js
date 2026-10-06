@@ -1,7 +1,7 @@
 // Checks that run on every page, at every screen size.
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
-import { pages, loadAllImages, watchErrors } from "./site.js";
+import { pages, loadAllImages, watchErrors, siteUrlPattern } from "./site.js";
 
 for (const url of pages) {
   test.describe(url, () => {
@@ -13,8 +13,8 @@ for (const url of pages) {
 
       await expect(page).toHaveTitle(/Marta Maçães Viana/);
       await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /^.{50,300}$/s);
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /^https:\/\/mrt-arch\.com\//);
-      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /^https:\/\/mrt-arch\.com\/.+\.(jpe?g|png)$/);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", siteUrlPattern());
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", siteUrlPattern(".+\\.(jpe?g|png)$"));
       await expect(page.locator("h1")).toHaveCount(1);
       expect(errors).toEqual([]);
     });

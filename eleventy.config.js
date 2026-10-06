@@ -57,7 +57,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml,yaml", (contents) => YAML.parse(contents));
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
   eleventyConfig.addWatchTarget("src/assets/");
 
   eleventyConfig.addCollection("projects", (api) =>

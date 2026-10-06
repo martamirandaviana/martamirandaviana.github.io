@@ -1,6 +1,7 @@
-# mrt-arch.com
+# Marta Maçães Viana — architecture portfolio
 
-Portfolio website of **Marta Maçães Viana**, architect. Live at <https://mrt-arch.com>.
+Portfolio website of **Marta Maçães Viana**, architect.
+Live at <https://martamirandaviana.github.io>.
 
 Built with [Eleventy](https://www.11ty.dev/), plain CSS and a little plain JavaScript.
 No CSS framework. GitHub Actions builds the site and publishes it to GitHub Pages
@@ -49,11 +50,20 @@ design/logo/              original logo files (not published)
 ## Add a project
 
 1. Make a folder `src/portfolio/<short-name>/`, for example `src/portfolio/river-house/`.
-   The folder name becomes the URL: `mrt-arch.com/portfolio/river-house/`.
+   The folder name becomes the URL: `<site>/portfolio/river-house/`.
 2. Put the photos in that folder (JPEG, PNG or WebP; full resolution is fine).
 3. Copy `index.md` from another project into the folder and change the text.
    The fields are described in [CLAUDE.md](CLAUDE.md#project-fields).
 4. Run `npm run shots -- --only=river-house` and look at the screenshots.
+
+## Custom domain
+
+There is no custom domain now. To add one (for example `mrt-arch.com`):
+
+1. At the domain registrar, point the domain to GitHub Pages
+   (see GitHub's "Managing a custom domain for your GitHub Pages site").
+2. In GitHub → Settings → Pages, enter the domain and turn on "Enforce HTTPS".
+3. Change `url` in `src/_data/site.yml` to the new address.
 
 ## Photos
 

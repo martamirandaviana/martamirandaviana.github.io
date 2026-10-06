@@ -1,6 +1,6 @@
 // Header navigation, redirects, 404, sitemap.
 import { test, expect } from "@playwright/test";
-import { pages, projects, redirects } from "./site.js";
+import { pages, projects, redirects, site } from "./site.js";
 
 test("the menu marks the current page", async ({ page }) => {
   await page.goto("/about/");
@@ -59,5 +59,5 @@ test("an unknown URL shows the 404 page", async ({ page }) => {
 
 test("the sitemap lists every page", async ({ request }) => {
   const xml = await (await request.get("/sitemap.xml")).text();
-  for (const url of pages) expect(xml).toContain(`<loc>https://mrt-arch.com${url}</loc>`);
+  for (const url of pages) expect(xml).toContain(`<loc>${site.url}${url}</loc>`);
 });

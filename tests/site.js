@@ -17,6 +17,11 @@ export const projects = projectDirs
 
 export const pages = ["/", "/portfolio/", "/about/", "/contact/", ...projects.map((p) => p.url)];
 
+export const site = YAML.parse(fs.readFileSync("src/_data/site.yml", "utf8"));
+const escape = (s) => s.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+// Matches an absolute URL on this site, for example https://<site>/portfolio/.
+export const siteUrlPattern = (rest = "") => new RegExp(`^${escape(site.url)}/${rest}`);
+
 export const redirects = YAML.parse(fs.readFileSync("src/_data/redirects.yml", "utf8"));
 
 // Load every lazy image and wait until all images are decoded.

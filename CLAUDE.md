@@ -6,7 +6,8 @@ changes in plain words and show her the result before you publish anything.
 
 ## Golden rule: show renders before you publish
 
-Every push to `main` goes live on https://mrt-arch.com within a few minutes.
+Every push to `main` goes live on https://martamirandaviana.github.io within a few minutes
+(the address is `url` in `src/_data/site.yml`).
 Before you commit and push a change:
 
 1. Run `npm run check`. It must pass (valid HTML, no broken links).

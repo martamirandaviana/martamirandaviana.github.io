@@ -3,7 +3,10 @@
 name: Marta Maçães Viana
 short_name: MRT
 role: Architecture
-url: https://mrt-arch.com
+# The public address of the site. All canonical links, link previews and the
+# sitemap use it. If a custom domain is added later (for example mrt-arch.com),
+# change it here and set the domain in GitHub → Settings → Pages.
+url: https://martamirandaviana.github.io
 lang: en
 locale: en_GB
 

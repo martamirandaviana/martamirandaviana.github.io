@@ -1,7 +1,7 @@
 {
   "name": "mrt-arch",
   "private": true,
-  "description": "Portfolio website of Marta Maçães Viana, architect. https://mrt-arch.com",
+  "description": "Portfolio website of Marta Maçães Viana, architect. https://martamirandaviana.github.io",
   "type": "module",
   "scripts": {
     "start": "eleventy --serve",
