@@ -1,7 +1,8 @@
 {% include "research/header.liquid" %}
 <nav class="research-topic-nav wrap" aria-label="Research topics">
-  {% for theme in research.themes %}<a href="#{{ theme.id | escape }}">{{ theme.title | escape }}</a>{% endfor %}
-  <a href="#conferences">Conferences</a>
+  <ul>
+    {% for theme in research.themes %}<li><a href="#{{ theme.id | escape }}">{{ theme.nav_label | default: theme.title | escape }}</a></li>{% endfor %}
+  </ul>
 </nav>
 <div class="research-theme-archive wrap">
   {% for theme in research.themes %}
@@ -23,11 +24,16 @@
       {% endif %}
     </header>
     <div class="research-theme-entries">
+      {% if theme.id == "conferences" %}
+      {% for conference in research.conferences %}{% include "research/conference-entry.liquid" %}{% endfor %}
+      {% elsif theme.id == "teaching" %}
+      {% for position in research.teaching %}{% include "research/teaching-entry.liquid" %}{% endfor %}
+      {% else %}
       {% assign entries = research.publications | where: "theme", theme.id %}
       {% assign show_year = true %}
       {% for publication in entries %}{% include "research/entry.liquid" %}{% endfor %}
+      {% endif %}
     </div>
   </section>
   {% endfor %}
 </div>
-{% include "research/conferences.liquid" %}

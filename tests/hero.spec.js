@@ -52,7 +52,7 @@ test("the keyboard pause control stops and restarts the slideshow", async ({ pag
 
 test("keyboard focus inside pauses it; leaving resumes it", async ({ page, isMobile }) => {
   test.skip(isMobile, "No keyboard on phones");
-  await page.locator(".hero__slide.is-active .hero__title a").focus();
+  await page.locator(".hero__slide.is-active .hero__media").focus();
   await page.keyboard.press("Shift+Tab");
   await page.keyboard.press("Tab"); // focus via keyboard, so :focus-visible applies
   await page.clock.runFor(INTERVAL * 2);

@@ -105,8 +105,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addAsyncShortcode("hero", async function (project, index) {
     const metadata = await processImage(project.data.cover, project.inputPath, "hero");
     const attrs = index === 0 ? { loading: "eager", fetchpriority: "high" } : {};
-    // The square image fills the left part of the hero on desktop.
-    return pictureHTML(metadata, project.data.cover_alt, "(min-width: 60em) 55vw, 100vw", attrs);
+    // Desktop photographs span the content width; phones use a square frame.
+    return pictureHTML(metadata, project.data.cover_alt, "(min-width: 64.5em) 984px, (min-width: 48em) calc(100vw - 48px), calc(100vw - 32px)", attrs);
   });
 
   // {% ogImage src, inputPath %} — URL path of a 1200 px JPEG for link previews.

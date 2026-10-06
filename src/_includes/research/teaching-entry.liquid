@@ -1,0 +1,7 @@
+<article class="research-entry">
+  <p class="research-kind">Teaching · {{ position.year | escape }}</p>
+  <h3 class="research-entry__title" lang="pt">{{ position.course | escape }}</h3>
+  <p class="research-authors">{{ position.role | escape }}</p>
+  <p class="research-venue"><a href="{{ position.url | escape }}" lang="pt">{{ position.institution | escape }}</a></p>
+  <p class="research-meta">{{ position.dates | escape }}</p>
+</article>

@@ -1,5 +1,5 @@
 intro: My research explores collective ownership, cooperative housing and the conditions for lasting housing affordability in Portugal.
-affiliation: PhD candidate · Faculty of Architecture, University of Porto
+affiliation: Architect and PhD researcher at FAUP, with international academic experience at KTH, published research, professional and teaching experience, and a strong interest in cooperative housing and housing policy.
 membership: Member of Rede-H
 context: Developed at FAUP and the Nuno Portas Centre for Studies, this work connects architectural research with housing policy, public land and the ways communities produce and inhabit space.
 orcid: https://orcid.org/0000-0002-9994-7610
@@ -44,8 +44,8 @@ publications:
     detail: Master’s thesis · 2022
     theme: full-scale
     summary: Research on full-scale devices as tools for architectural experimentation, communication and teaching.
-    citation: "Viana, Marta Maçães. The Potential of the 1:1 Scale: Devices for Experimentation and Communication in Architecture. Master’s thesis, Faculty of Architecture, University of Porto, 2022. https://hdl.handle.net/10216/143091."
-    url: https://hdl.handle.net/10216/143091
+    citation: "Viana, Marta Maçães. The Potential of the 1:1 Scale: Devices for Experimentation and Communication in Architecture. Master’s thesis, Faculty of Architecture, University of Porto, 2022. https://repositorio-aberto.up.pt/handle/10216/143091."
+    url: https://repositorio-aberto.up.pt/handle/10216/143091
     url_label: Repository
   - id: petites-folies-paper
     year: 2021
@@ -73,6 +73,13 @@ publications:
     citation: "Viana, Marta Maçães. “A paridade não se esgota nas listas.” Eu Voto, Eu voto, eu opino, Instagram, 27 September 2026. Portuguese. https://www.instagram.com/p/DdycKPHjF8G/."
     url: https://www.instagram.com/p/DdycKPHjF8G/
     url_label: Read on Instagram
+teaching:
+  - year: 2026
+    course: Implantação de Obras e Estruturas
+    institution: Universidade Politécnica do Cávado e do Ave
+    url: https://ipca.pt/
+    role: Assistant professor
+    dates: January–August 2026
 conferences:
   - year: 2026
     title: "Habitação em Portugal: Desafios, Políticas e Caminhos Futuros?"
@@ -95,6 +102,7 @@ themes:
   - id: housing
     number: "01"
     title: Housing & collective ownership
+    nav_label: Housing
     description: Cooperative housing, public land, rights of use and long-term affordability.
     thumbnail:
       image: /assets/research/research-cover.jpg
@@ -105,6 +113,7 @@ themes:
   - id: full-scale
     number: "02"
     title: Architecture at 1:1
+    nav_label: Architecture devices
     description: Full-scale experimentation, communication and shared public space.
     thumbnail:
       image: /portfolio/petites-folies/P2_Capa.jpg
@@ -114,3 +123,23 @@ themes:
     number: "03"
     title: Politics
     description: Democratic participation, political representation and equality.
+    thumbnail:
+      image: /assets/research/eu-voto-cover.jpeg
+      alt: Eu Voto cover for “A paridade não se esgota nas listas”, with Marta Maçães Viana’s portrait on a purple background.
+      caption: Eu Voto · Eu voto, eu opino
+  - id: conferences
+    number: "04"
+    title: Conferences
+    description: Conference presentations and contributions to architectural and housing research.
+    thumbnail:
+      image: /assets/research/housing-conference-poster.png
+      alt: Red, yellow and white poster for “Habitação em Portugal — Desafios, Políticas e Caminhos Futuros?”, held on 25–26 June 2026 at ICS, Universidade de Lisboa.
+      caption: Habitação em Portugal · Rede-H · 2026
+  - id: teaching
+    number: "05"
+    title: Teaching
+    description: Teaching experience in construction and structures.
+    thumbnail:
+      image: /assets/research/upca-logo.png
+      alt: White UPCA logo on a green background for Universidade Politécnica do Cávado e do Ave.
+      caption: Universidade Politécnica do Cávado e do Ave

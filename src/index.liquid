@@ -12,7 +12,7 @@ body_class: page-home
   <div class="hero__slides">
     {%- for project in featured %}
     <div class="hero__slide{% if forloop.first %} is-active{% endif %}" id="slide-{{ forloop.index }}" role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} / {{ count }}"{% unless forloop.first %} inert{% endunless %}>
-      <a class="hero__media" href="{{ project.url }}">{% hero project, forloop.index0 %}</a>
+      <a class="hero__media" href="{{ project.url }}" aria-label="{{ project.data.title | escape }}">{% hero project, forloop.index0 %}</a>
       <div class="hero__text">
         <h2 class="hero__title"><a href="{{ project.url }}">{{ project.data.title }}</a></h2>
         <p class="hero__subtitle">{{ project.data.subtitle }}, {{ project.data.year }}</p>

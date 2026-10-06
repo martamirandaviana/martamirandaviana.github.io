@@ -13,8 +13,12 @@ test("the header logo lines up with the page content", async ({ page }) => {
   }
 });
 
-test("the hero title fits inside its column", async ({ page }) => {
+test("the hero caption fits on phones and is hidden on larger screens", async ({ page, isMobile }) => {
   await page.goto("/");
+  if (!isMobile) {
+    await expect(page.locator(".hero__slide.is-active .hero__text")).toBeHidden();
+    return;
+  }
   const overflow = await page.locator(".hero__slide").evaluateAll((slides) =>
     slides.map((s) => {
       const text = s.querySelector(".hero__text").getBoundingClientRect();
@@ -25,12 +29,19 @@ test("the hero title fits inside its column", async ({ page }) => {
   expect(overflow.every((o) => o <= 1), `overflow per slide: ${overflow}`).toBe(true);
 });
 
-test("the first screen of the home page shows the hero image and title", async ({ page }) => {
+test("the first screen shows the photo with a caption on phones and a wide frame on larger screens", async ({ page, isMobile }) => {
   await page.goto("/");
   const viewport = page.viewportSize();
-  for (const selector of [".hero__slide.is-active .hero__media", ".hero__slide.is-active .hero__title"]) {
+  const selectors = [".hero__slide.is-active .hero__media"];
+  if (isMobile) selectors.push(".hero__slide.is-active .hero__title");
+  for (const selector of selectors) {
     const box = await page.locator(selector).boundingBox();
     expect(box.y + box.height, `${selector} is below the fold`).toBeLessThanOrEqual(viewport.height);
+  }
+  if (!isMobile) {
+    const photo = await page.locator(selectors[0]).boundingBox();
+    expect(photo.width).toBeGreaterThan(photo.height);
+    await expect(page.locator(".site-footer__mark")).toBeHidden();
   }
 });
 
