@@ -50,7 +50,9 @@ export function initHero() {
     if (!run && timer) stopTimer();
     if (toggle) {
       toggle.setAttribute("aria-pressed", String(state.userPaused));
-      toggle.setAttribute("aria-label", state.userPaused ? toggle.dataset.play : toggle.dataset.pause);
+      const label = state.userPaused ? toggle.dataset.play : toggle.dataset.pause;
+      toggle.setAttribute("aria-label", label);
+      toggle.querySelector(".hero__toggle-label").textContent = label;
     }
   }
 

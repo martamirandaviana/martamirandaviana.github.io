@@ -27,6 +27,9 @@ layout: layouts/base.liquid
   </header>
 
   <div class="project-body wrap">
+    <div class="prose project-text">
+      {{ content }}
+    </div>
     <dl class="facts">
       {%- if year %}<div><dt>{{ t.year }}</dt><dd>{{ year }}</dd></div>{% endif %}
       {%- if location %}<div><dt>{{ t.location }}</dt><dd>{{ location }}</dd></div>{% endif %}
@@ -35,9 +38,6 @@ layout: layouts/base.liquid
       {%- if collaborators %}<div><dt>{{ t.collaborators }}</dt><dd>{{ collaborators }}</dd></div>{% endif %}
       {%- if photography %}<div><dt>{{ t.photography }}</dt><dd>{{ photography }}</dd></div>{% endif %}
     </dl>
-    <div class="prose project-text">
-      {{ content }}
-    </div>
   </div>
 
   <div class="project-gallery wrap wrap--wide">

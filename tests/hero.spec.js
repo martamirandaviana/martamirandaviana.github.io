@@ -37,15 +37,15 @@ test("a click on a dot restarts the full interval", async ({ page }) => {
   expect(await activeIndex(page)).toBe(3);
 });
 
-test("the pause button stops and restarts the slideshow", async ({ page }) => {
+test("the keyboard pause control stops and restarts the slideshow", async ({ page }) => {
   const toggle = page.locator(".hero__toggle");
   await expect(toggle).toHaveAttribute("aria-pressed", "false");
-  await toggle.click();
+  await toggle.press("Enter");
   await expect(toggle).toHaveAttribute("aria-pressed", "true");
   await expect(toggle).toHaveAccessibleName("Play slideshow");
   await page.clock.runFor(INTERVAL * 3);
   expect(await activeIndex(page)).toBe(0);
-  await toggle.click();
+  await toggle.press("Enter");
   await page.clock.runFor(INTERVAL + 100);
   expect(await activeIndex(page)).toBe(1);
 });
@@ -74,7 +74,7 @@ test.describe("with reduced motion", () => {
     await expect(page.locator(".hero__toggle")).toHaveAttribute("aria-pressed", "true");
     await page.clock.runFor(INTERVAL * 2);
     expect(await activeIndex(page)).toBe(0);
-    await page.locator(".hero__toggle").click();
+    await page.locator(".hero__toggle").press("Enter");
     await page.clock.runFor(INTERVAL + 100);
     expect(await activeIndex(page)).toBe(1);
   });
@@ -103,4 +103,27 @@ test.describe("with reduced motion, the current dot", () => {
   test("is marked although nothing moves", async ({ page }) => {
     expect(await darkestPixel(page.locator(".hero__dot").first())).toBeLessThan(110);
   });
+});
+
+// The home page leads straight from a photograph to its project on every size.
+test("each featured photo opens its own project", async ({ page }) => {
+  const dots = page.locator(".hero__dot");
+  const count = await dots.count();
+  expect(count).toBeGreaterThan(0);
+  for (let i = 0; i < count; i++) {
+    await page.goto("/");
+    await expect(page.locator(".hero")).toHaveClass(/is-ready/);
+    await dots.nth(i).click();
+    const photo = page.locator(".hero__slide.is-active .hero__media");
+    const target = await photo.getAttribute("href");
+    const title = await page.locator(".hero__slide.is-active .hero__title").textContent();
+    await expect(photo).toHaveAttribute("href", /^\/portfolio\/.+\/$/);
+    await photo.click();
+    await expect(page).toHaveURL(new URL(target, page.url()).href);
+    await expect(page.locator(".project-head__title")).toHaveText(title.trim());
+  }
+});
+
+test("the home page does not repeat the portfolio project list", async ({ page }) => {
+  await expect(page.getByRole("heading", { name: "Portfolio", exact: true })).toHaveCount(0);
 });

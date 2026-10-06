@@ -1,10 +1,6 @@
 <header class="site-header">
   <a class="brand" href="/" aria-label="{{ site.name }}, {{ t.home }}" {% if page.url == "/" %}aria-current="page"{% endif %}>
     <span class="brand__mark">{{ "logo-mrt.svg" | svg }}</span>
-    <span class="brand__text">
-      <span class="brand__name">{{ site.name }}</span>
-      <span class="brand__role">{{ site.role }}</span>
-    </span>
   </a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
     <span class="menu-toggle__label">{{ t.menu }}</span>
