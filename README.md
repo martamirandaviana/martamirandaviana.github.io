@@ -1,7 +1,7 @@
 # Marta Maçães Viana — architecture portfolio
 
 Portfolio website of **Marta Maçães Viana**, architect.
-Live at <https://martamirandaviana.github.io>.
+Website address: <https://mrt-arch.com>.
 
 Built with [Eleventy](https://www.11ty.dev/), plain CSS and a little plain JavaScript.
 No CSS framework. GitHub Actions builds the site and publishes it to GitHub Pages
@@ -58,12 +58,41 @@ design/logo/              original logo files (not published)
 
 ## Custom domain
 
-There is no custom domain now. To add one (for example `mrt-arch.com`):
+The custom domain is `mrt-arch.com`, registered with Amen. Its configuration is:
 
-1. At the domain registrar, point the domain to GitHub Pages
-   (see GitHub's "Managing a custom domain for your GitHub Pages site").
-2. In GitHub → Settings → Pages, enter the domain and turn on "Enforce HTTPS".
-3. Change `url` in `src/_data/site.yml` to the new address.
+1. In [GitHub → Settings → Pages](https://github.com/martamirandaviana/martamirandaviana.github.io/settings/pages),
+   set **Custom domain** to `mrt-arch.com` and save. Keep **GitHub Actions** as
+   the publishing source.
+2. In Amen's DNS editor, the saved records should have exactly these names
+   and values. This editor can treat `@` as a literal subdomain and save it as
+   `@.mrt-arch.com`; that does not configure the root domain. Correct those
+   names to `mrt-arch.com` in the existing-record table.
+
+   | Type | Name | Value |
+   | --- | --- | --- |
+   | A | mrt-arch.com | 185.199.108.153 |
+   | A | mrt-arch.com | 185.199.109.153 |
+   | A | mrt-arch.com | 185.199.110.153 |
+   | A | mrt-arch.com | 185.199.111.153 |
+   | CNAME | www.mrt-arch.com | martamirandaviana.github.io. |
+
+   Replace existing conflicting website records for `mrt-arch.com` and `www`. Remove
+   conflicting AAAA records that direct the website to another host. Leave
+   email records (MX and email-related TXT records) unchanged. A TTL of 3600
+   seconds, or Amen's default, is suitable.
+3. Once GitHub's DNS check succeeds and its certificate is ready, enable
+   **Enforce HTTPS**. DNS changes may take up to 24 hours to propagate.
+4. Keep `url: https://mrt-arch.com` in
+   `src/_data/site.yml`. It controls canonical URLs, link previews, structured
+   data, robots.txt and the sitemap.
+
+This repository deploys through GitHub Actions, so the custom domain must be
+saved in the GitHub Pages settings; a repository `CNAME` file does not configure
+the domain for this deployment method. With both DNS names configured, GitHub
+Pages redirects `www.mrt-arch.com` to the selected root domain.
+
+GitHub's instructions:
+[Managing a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
 ## Photos
 
