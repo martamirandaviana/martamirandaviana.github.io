@@ -807,7 +807,7 @@
     .page-home main { display: flex; align-items: center; }
     .page-home .hero { position: relative; padding-block: var(--space-m); }
     .page-home .site-footer { margin-top: 0; }
-    .hero__media { width: 100%; aspect-ratio: 16 / 9; max-height: calc(100svh - 16rem); }
+    .hero__media { width: 100%; aspect-ratio: 3 / 2; max-height: calc(100svh - 14rem); }
     .hero__media img { object-fit: cover; }
     .hero__text { display: none; }
     /* Centre the photograph itself; the slide controls sit in the lower gap. */
