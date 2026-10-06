@@ -1,0 +1,38 @@
+{% include "research/header.liquid" %}
+<section class="research-editorial wrap" aria-labelledby="editorial-title">
+  <div class="research-section-heading">
+    <h2 id="editorial-title" class="research-editorial-title">Housing as a collective practice.</h2>
+    <span class="research-meta">Selected writing · 2026</span>
+  </div>
+  <div class="research-feature-grid">
+    {% assign featured = research.publications | where: "year", 2026 | where: "theme", "housing" %}
+    {% for publication in featured %}
+    <article class="research-feature">
+      {% if publication.image %}
+      <figure class="research-feature-visual">
+        <img src="{{ publication.image | escape }}" width="988" height="1400" alt="{{ publication.image_alt | escape }}" loading="lazy">
+      </figure>
+      {% else %}
+      <div class="research-feature-quote">
+        <p class="research-quote-source">PÚBLICO · OPINIÃO</p>
+        <blockquote lang="pt">“{{ publication.quote | escape }}”</blockquote>
+        <p class="research-meta">Marta Maçães Viana · 17 March 2026</p>
+      </div>
+      {% endif %}
+      <p class="research-kind">{{ publication.kind | escape }}</p>
+      <h3 class="research-entry__title"{% if publication.title_lang %} lang="{{ publication.title_lang | escape }}"{% endif %}><a href="{{ publication.pdf | escape }}">{{ publication.title | escape }}</a></h3>
+      <p class="research-authors">{{ publication.authors | escape }}</p>
+      <p class="research-venue">{{ publication.venue | escape }}</p>
+      <p class="research-feature-summary">{{ publication.summary | escape }}</p>
+      {% include "research/actions.liquid" %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+<section class="research-earlier wrap" aria-labelledby="earlier-title">
+  <h2 id="earlier-title" class="research-section-title">Earlier research · Architecture at 1:1</h2>
+  {% for publication in research.publications %}{% unless publication.year == 2026 %}
+  {% assign show_year = true %}{% include "research/entry.liquid" %}
+  {% endunless %}{% endfor %}
+</section>
+{% include "research/conferences.liquid" %}

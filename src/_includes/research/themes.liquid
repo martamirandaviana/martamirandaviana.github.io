@@ -1,0 +1,33 @@
+{% include "research/header.liquid" %}
+<nav class="research-topic-nav wrap" aria-label="Research topics">
+  {% for theme in research.themes %}<a href="#{{ theme.id | escape }}">{{ theme.title | escape }}</a>{% endfor %}
+  <a href="#conferences">Conferences</a>
+</nav>
+<div class="research-theme-archive wrap">
+  {% for theme in research.themes %}
+  <section class="research-theme" id="{{ theme.id | escape }}" aria-labelledby="theme-title-{{ theme.id | escape }}">
+    <header class="research-theme-head">
+      <p class="research-theme-number">{{ theme.number | escape }}</p>
+      <h2 id="theme-title-{{ theme.id | escape }}">{{ theme.title | escape }}</h2>
+      <p>{{ theme.description | escape }}</p>
+      {% if theme.thumbnail.image %}
+      <figure class="research-theme-thumbnail">
+        <div class="research-theme-visual{% if theme.thumbnail.secondary_image %} research-theme-visual--composite{% endif %}">
+          {% picture theme.thumbnail.image, theme.thumbnail.alt, "(min-width: 48em) 312px, calc(100vw - 48px)", "card" %}
+          {% if theme.thumbnail.secondary_image %}
+          {% picture theme.thumbnail.secondary_image, theme.thumbnail.secondary_alt, "(min-width: 48em) 172px, 55vw", "card" %}
+          {% endif %}
+        </div>
+        <figcaption>{{ theme.thumbnail.caption | escape }}</figcaption>
+      </figure>
+      {% endif %}
+    </header>
+    <div class="research-theme-entries">
+      {% assign entries = research.publications | where: "theme", theme.id %}
+      {% assign show_year = true %}
+      {% for publication in entries %}{% include "research/entry.liquid" %}{% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</div>
+{% include "research/conferences.liquid" %}

@@ -1,0 +1,12 @@
+<div class="research-actions">
+  {%- if publication.pdf %}<a href="{{ publication.pdf | escape }}" target="_blank" rel="noopener">PDF →</a>{% endif %}
+  {%- if publication.url %}<a href="{{ publication.url | escape }}">{{ publication.url_label | escape }} →</a>{% endif %}
+  {% if publication.summary %}<details class="research-disclosure">
+    <summary>Summary</summary>
+    <p>{{ publication.summary | escape }}</p>
+  </details>{% endif %}
+  {% if publication.citation %}<details class="research-disclosure">
+    <summary>Citation</summary>
+    <p>{{ publication.citation | escape }}</p>
+  </details>{% endif %}
+</div>

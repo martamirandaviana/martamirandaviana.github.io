@@ -1,0 +1,8 @@
+<header class="research-head wrap">
+  <div class="research-heading-row">
+    <h1 class="page-title">Research</h1>
+    <a class="research-orcid" href="{{ research.orcid | escape }}" rel="me">ORCID →</a>
+  </div>
+  <p class="research-affiliation">{{ research.affiliation | escape }}{% if research.membership %} · {{ research.membership | escape }}{% endif %}</p>
+  <p class="research-intro">{{ research.intro | escape }}</p>
+</header>

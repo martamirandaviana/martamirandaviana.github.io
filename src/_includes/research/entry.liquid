@@ -1,0 +1,10 @@
+<article class="research-entry">
+  <p class="research-kind">{{ publication.kind | escape }}{% if show_year and publication.year %} · {{ publication.year | escape }}{% endif %}</p>
+  <h3 class="research-entry__title"{% if publication.title_lang %} lang="{{ publication.title_lang | escape }}"{% endif %}>
+    <a href="{{ publication.pdf | default: publication.url | escape }}">{{ publication.title | escape }}</a>
+  </h3>
+  {% if publication.authors %}<p class="research-authors">{{ publication.authors | escape }}</p>{% endif %}
+  {% if publication.venue %}<p class="research-venue">{{ publication.venue | escape }}</p>{% endif %}
+  {% if publication.detail or publication.language %}<p class="research-meta">{{ publication.detail | escape }}{% if publication.detail and publication.language %} · {% endif %}{{ publication.language | escape }}</p>{% endif %}
+  {% include "research/actions.liquid" %}
+</article>

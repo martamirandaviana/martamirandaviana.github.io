@@ -1,0 +1,116 @@
+intro: My research explores collective ownership, cooperative housing and the conditions for lasting housing affordability in Portugal.
+affiliation: PhD candidate · Faculty of Architecture, University of Porto
+membership: Member of Rede-H
+context: Developed at FAUP and the Nuno Portas Centre for Studies, this work connects architectural research with housing policy, public land and the ways communities produce and inhabit space.
+orcid: https://orcid.org/0000-0002-9994-7610
+years: [2026, 2022, 2021]
+publications:
+  - id: cooperative-housing
+    year: 2026
+    kind: Conference contribution
+    title: Collective Ownership and Cooperative Housing under Rights of Use. Non-Speculative Approaches to Affordable Housing in Portugal
+    authors: Marta Maçães Viana · Gisela Lameira
+    venue: "EURAU 2026 · LATITUDES. Situated reflections on architectural research"
+    detail: Extended abstract · Umeå University · June 2026 · pp. 570–576
+    language: English
+    theme: housing
+    summary: Examines cooperative housing under rights of use in Portugal alongside European precedents, focusing on public or collective land control, limits on profit, and regulation that can sustain long-term affordability.
+    citation: "Viana, Marta Maçães; Lameira, Gisela. “Collective Ownership and Cooperative Housing under Rights of Use. Non-Speculative Approaches to Affordable Housing in Portugal.” In LATITUDES. Situated reflections on architectural research. Umeå University, June 2026, pp. 570–576. ISBN 978-91-6850-075-1."
+    pdf: /assets/research/papers/eurau-2026-cooperative-housing.pdf
+    image: /assets/research/ownership-map.png
+    image_alt: "Marta Maçães Viana’s research framework mapping collective ownership and cooperative housing under rights of use across Europe."
+  - id: publico-cooperatives
+    year: 2026
+    kind: Opinion article
+    title: "IVA a 6% para todos: e as cooperativas, onde ficam?"
+    title_lang: pt
+    authors: Marta Maçães Viana
+    venue: PÚBLICO · Opinião
+    detail: 17 March 2026
+    language: Portuguese
+    theme: housing
+    summary: Discusses why equal VAT incentives do not capture the value of housing cooperatives, arguing for community participation, access to public land, and stable public–cooperative agreements.
+    quote: A mais-valia das cooperativas está na participação e na construção de comunidade.
+    citation: "Viana, Marta Maçães. “IVA a 6% para todos: e as cooperativas, onde ficam?” PÚBLICO, Opinião, 17 March 2026. Portuguese."
+    pdf: /assets/research/papers/publico-2026-housing-cooperatives.pdf
+    url: https://www.publico.pt/2026/03/17/opiniao/opiniao/iva-6-cooperativas-onde-ficam-2167952
+    url_label: Read at PÚBLICO
+  - id: full-scale-thesis
+    year: 2022
+    kind: Master’s thesis
+    title: "The Potential of the 1:1 Scale: Devices for Experimentation and Communication in Architecture"
+    authors: Marta Maçães Viana
+    venue: Faculty of Architecture, University of Porto
+    detail: Master’s thesis · 2022
+    theme: full-scale
+    summary: Research on full-scale devices as tools for architectural experimentation, communication and teaching.
+    citation: "Viana, Marta Maçães. The Potential of the 1:1 Scale: Devices for Experimentation and Communication in Architecture. Master’s thesis, Faculty of Architecture, University of Porto, 2022. https://hdl.handle.net/10216/143091."
+    url: https://hdl.handle.net/10216/143091
+    url_label: Repository
+  - id: petites-folies-paper
+    year: 2021
+    kind: Journal article
+    title: Petites Folies – Other Landscapes over Douro
+    authors: Ana Neiva · Marta Maçães Viana · João Nuno Gomes
+    venue: UOU Scientific Journal · No. 2
+    detail: "2021 · DOI: 10.14198/uou.2021.2.08"
+    theme: full-scale
+    summary: A co-authored article on Petites Folies, connecting full-scale installations with architectural experimentation and public space.
+    citation: "Neiva, Ana; Viana, Marta Maçães; Gomes, João Nuno. “Petites Folies – Other Landscapes over Douro.” UOU Scientific Journal, No. 2, 2021. https://doi.org/10.14198/uou.2021.2.08."
+    url: https://doi.org/10.14198/uou.2021.2.08
+    url_label: Journal / DOI
+  - id: politics-instagram
+    year: 2026
+    kind: Opinion article
+    title: A paridade não se esgota nas listas
+    title_lang: pt
+    authors: Marta Maçães Viana
+    venue: Eu Voto · Eu voto, eu opino
+    detail: 27 September 2026
+    language: Portuguese
+    theme: politics
+    summary: Traces women’s political participation in Portugal, examines the effects and limitations of the Parity Law, and argues that representation must be accompanied by equal access to leadership, visibility and decision-making.
+    citation: "Viana, Marta Maçães. “A paridade não se esgota nas listas.” Eu Voto, Eu voto, eu opino, Instagram, 27 September 2026. Portuguese. https://www.instagram.com/p/DdycKPHjF8G/."
+    url: https://www.instagram.com/p/DdycKPHjF8G/
+    url_label: Read on Instagram
+conferences:
+  - year: 2026
+    title: "Habitação em Portugal: Desafios, Políticas e Caminhos Futuros?"
+    title_lang: pt
+    venue: Lisbon, Portugal
+    organizer: Rede-H
+    role: Presented paper
+    date: 25 June 2026
+    work: "A Evolução da Habitação Cooperativa em Portugal — Contexto Político, Produção Habitacional e Regime de Propriedade"
+    work_lang: pt
+    note: Presentation without published proceedings.
+  - year: 2026
+    title: EURAU 2026 — LATITUDES
+    venue: Umeå School of Architecture · Umeå University, Sweden
+    role: Co-authored contribution to the conference proceedings
+    work: Collective ownership and cooperative housing under rights of use
+    authors: Marta Maçães Viana · Gisela Lameira
+    pdf: /assets/research/papers/eurau-2026-cooperative-housing.pdf
+themes:
+  - id: housing
+    number: "01"
+    title: Housing & collective ownership
+    description: Cooperative housing, public land, rights of use and long-term affordability.
+    thumbnail:
+      image: /assets/research/research-cover.jpg
+      alt: Research framework showing collective ownership and cooperative housing under rights of use across Europe.
+      secondary_image: /assets/research/publico-article-header.png
+      secondary_alt: PÚBLICO article header for “IVA a 6% para todos, e as cooperativas, onde ficam?”, with Marta Maçães Viana’s portrait, name and publication date.
+      caption: EURAU 2026 · PÚBLICO
+  - id: full-scale
+    number: "02"
+    title: Architecture at 1:1
+    description: Full-scale experimentation, communication and shared public space.
+    thumbnail:
+      image: /portfolio/petites-folies/P2_Capa.jpg
+      alt: Visitors using the blue steel Petites Folies installation among trees beside a white building in Porto.
+      caption: Petites Folies · Photograph by Alexander Bogorodskiy
+  - id: politics
+    number: "03"
+    title: Politics
+    description: Democratic participation, political representation and equality.

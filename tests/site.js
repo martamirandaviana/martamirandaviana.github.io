@@ -15,7 +15,7 @@ export const projects = projectDirs
   })
   .filter((p) => p.published !== false);
 
-export const pages = ["/", "/portfolio/", "/about/", "/contact/", ...projects.map((p) => p.url)];
+export const pages = ["/", "/portfolio/", "/research/", "/about/", "/contact/", ...projects.map((p) => p.url)];
 
 export const site = YAML.parse(fs.readFileSync("src/_data/site.yml", "utf8"));
 const escape = (s) => s.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");

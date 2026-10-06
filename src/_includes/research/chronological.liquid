@@ -1,0 +1,27 @@
+{% include "research/header.liquid" %}
+<section class="research-index wrap" aria-labelledby="publications-title">
+  <div class="research-section-heading">
+    <h2 id="publications-title" class="research-section-title">Publications &amp; writing</h2>
+    <a href="#conferences">Conferences ↓</a>
+  </div>
+  {%- for year in research.years %}
+  <section class="research-year-group" aria-labelledby="year-{{ year | escape }}">
+    <h2 id="year-{{ year | escape }}" class="research-year-heading">{{ year | escape }}</h2>
+    {%- assign entries = research.publications | where: "year", year -%}
+    {%- for publication in entries %}
+    <div class="research-index-row">
+      <div class="research-index-mark">
+        {% if publication.image %}
+        <a href="{{ publication.pdf | escape }}" tabindex="-1" aria-hidden="true"><img src="{{ publication.image | escape }}" width="988" height="1400" alt="{{ publication.image_alt | escape }}" loading="lazy"></a>
+        {% else %}
+        <span class="research-index-number">{{ forloop.index | prepend: "0" | slice: -2, 2 | escape }}</span>
+        <span class="research-index-kind">{{ publication.kind | escape }}</span>
+        {% endif %}
+      </div>
+      {% include "research/entry.liquid" %}
+    </div>
+    {%- endfor %}
+  </section>
+  {%- endfor %}
+</section>
+{% include "research/conferences.liquid" %}

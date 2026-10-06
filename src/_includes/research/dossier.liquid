@@ -1,0 +1,22 @@
+{% include "research/header.liquid" %}
+<div class="research-dossier wrap">
+  <section class="research-dossier-main" aria-labelledby="dossier-title">
+    <p class="research-kind">Doctoral research · Since 2025</p>
+    <h2 id="dossier-title" class="research-dossier-title">Collective ownership.<br>Lasting affordability.</h2>
+    <p class="research-dossier-context">{{ research.context | escape }}</p>
+    <ul class="research-topics" aria-label="Research themes">
+      <li>Cooperative housing</li><li>Public land</li><li>Rights of use</li>
+    </ul>
+    {% assign paper = research.publications | first %}
+    <figure class="research-dossier-figure">
+      <img src="{{ paper.image | escape }}" width="988" height="1400" alt="{{ paper.image_alt | escape }}" loading="lazy">
+      <figcaption>Research framework · EURAU 2026 · Marta Maçães Viana</figcaption>
+    </figure>
+  </section>
+  <section class="research-dossier-library" aria-labelledby="library-title">
+    <h2 id="library-title" class="research-section-title">Publications &amp; writing</h2>
+    {% assign show_year = true %}
+    {% for publication in research.publications %}{% include "research/entry.liquid" %}{% endfor %}
+  </section>
+</div>
+{% include "research/conferences.liquid" %}

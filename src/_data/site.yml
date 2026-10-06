@@ -36,6 +36,8 @@ form_endpoint: https://formspree.io/f/myzdypow
 navigation:
   - key: portfolio
     url: /portfolio/
+  - key: research
+    url: /research/
   - key: about
     url: /about/
   - key: contact
