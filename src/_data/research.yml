@@ -25,16 +25,16 @@ publications:
     title: "IVA a 6% para todos: e as cooperativas, onde ficam?"
     title_lang: pt
     authors: Marta Maçães Viana
-    venue: PÚBLICO · Opinião
+    venue: PUBLICO · Opinião
     detail: 17 March 2026
     language: Portuguese
     theme: housing
     summary: Discusses why equal VAT incentives do not capture the value of housing cooperatives, arguing for community participation, access to public land, and stable public–cooperative agreements.
     quote: A mais-valia das cooperativas está na participação e na construção de comunidade.
-    citation: "Viana, Marta Maçães. “IVA a 6% para todos: e as cooperativas, onde ficam?” PÚBLICO, Opinião, 17 March 2026. Portuguese."
+    citation: "Viana, Marta Maçães. “IVA a 6% para todos: e as cooperativas, onde ficam?” PUBLICO, Opinião, 17 March 2026. Portuguese."
     pdf: /assets/research/papers/publico-2026-housing-cooperatives.pdf
     url: https://www.publico.pt/2026/03/17/opiniao/opiniao/iva-6-cooperativas-onde-ficam-2167952
-    url_label: Read at PÚBLICO
+    url_label: Read at PUBLICO
   - id: full-scale-thesis
     year: 2022
     kind: Master’s thesis
@@ -108,8 +108,8 @@ themes:
       image: /assets/research/research-cover.jpg
       alt: Research framework showing collective ownership and cooperative housing under rights of use across Europe.
       secondary_image: /assets/research/publico-article-header.png
-      secondary_alt: PÚBLICO article header for “IVA a 6% para todos, e as cooperativas, onde ficam?”, with Marta Maçães Viana’s portrait, name and publication date.
-      caption: EURAU 2026 · PÚBLICO
+      secondary_alt: PUBLICO article header for “IVA a 6% para todos, e as cooperativas, onde ficam?”, with Marta Maçães Viana’s portrait, name and publication date.
+      caption: EURAU 2026 · PUBLICO
   - id: full-scale
     number: "02"
     title: Architecture at 1:1
