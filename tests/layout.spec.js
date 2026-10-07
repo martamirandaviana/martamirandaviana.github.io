@@ -46,7 +46,7 @@ test("the first screen shows the photo with a caption on phones and a wide frame
 });
 
 test("long text stays at a readable line length", async ({ page }) => {
-  for (const url of ["/about/", projects[0].url]) {
+  for (const url of ["/about/"]) {
     await page.goto(url);
     // Average characters per line = line width / average character width.
     const chars = await page.locator(".prose p").first().evaluate((p) => {
@@ -58,6 +58,17 @@ test("long text stays at a readable line length", async ({ page }) => {
     });
     // Typography rule of thumb: 45 to 75 characters; allow up to 85.
     expect(chars, `on ${url}`).toBeLessThanOrEqual(85);
+  }
+});
+
+test("project descriptions span the page margins and justify both edges", async ({ page }) => {
+  for (const project of projects) {
+    await page.goto(project.url);
+    const body = await page.locator(".project-body").boundingBox();
+    const text = await page.locator(".project-text").boundingBox();
+    expect(Math.abs(text.x - body.x)).toBeLessThanOrEqual(1);
+    expect(Math.abs(text.width - body.width)).toBeLessThanOrEqual(1);
+    expect(await page.locator(".project-text p").first().evaluate(p => getComputedStyle(p).textAlign)).toBe("justify");
   }
 });
 

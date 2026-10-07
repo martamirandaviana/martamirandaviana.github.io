@@ -35,6 +35,7 @@ the result and take less than a second.
 src/
   _data/site.yml          name, email, social links, home page text, menu
   _data/cv.yml            the CV on the About page
+  _data/research.yml      publications, conferences, teaching and thumbnail images
   _data/i18n.yml          all interface text (buttons, labels)
   _data/redirects.yml     old URLs that forward to new ones
   about.md                the About text
@@ -55,6 +56,19 @@ design/logo/              original logo files (not published)
 3. Copy `index.md` from another project into the folder and change the text.
    The fields are described in [CLAUDE.md](CLAUDE.md#project-fields).
 4. Run `npm run shots -- --only=river-house` and look at the screenshots.
+
+## Research and About
+
+Edit publications, conference participation and teaching in `src/_data/research.yml`.
+These records also populate the corresponding About CV entries automatically.
+The About biography stays in `src/about.md`; other CV entries stay in `cv.yml`.
+
+Each carousel thumbnail slide has a `key` matching the corresponding publication
+or conference `id`. Hovering or focusing that entry selects its image. On phones,
+tap or swipe the image; reduced-motion preferences disable automatic changes.
+
+Projects can set `hero` and `hero_alt` to use a different image on the homepage
+while keeping their portfolio cover.
 
 ## Custom domain
 

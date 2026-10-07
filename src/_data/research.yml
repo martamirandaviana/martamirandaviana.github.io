@@ -1,4 +1,5 @@
 intro: My research explores collective ownership, cooperative housing and the conditions for lasting housing affordability in Portugal.
+page_intro:
 affiliation: Architect and PhD researcher at FAUP, with international academic experience at KTH, published research, professional and teaching experience, and a strong interest in cooperative housing and housing policy.
 membership: Member of Rede-H
 context: Developed at FAUP and the Nuno Portas Centre for Studies, this work connects architectural research with housing policy, public land and the ways communities produce and inhabit space.
@@ -80,8 +81,10 @@ teaching:
     url: https://ipca.pt/
     role: Assistant professor
     dates: January–August 2026
+    programme: CTeSP Intelligent and Sustainable Construction
 conferences:
-  - year: 2026
+  - id: housing-conference
+    year: 2026
     title: "Habitação em Portugal: Desafios, Políticas e Caminhos Futuros?"
     title_lang: pt
     venue: Lisbon, Portugal
@@ -91,7 +94,8 @@ conferences:
     work: "A Evolução da Habitação Cooperativa em Portugal — Contexto Político, Produção Habitacional e Regime de Propriedade"
     work_lang: pt
     note: Presentation without published proceedings.
-  - year: 2026
+  - id: eurau-conference
+    year: 2026
     title: EURAU 2026 — LATITUDES
     venue: Umeå School of Architecture · Umeå University, Sweden
     role: Co-authored contribution to the conference proceedings
@@ -105,10 +109,13 @@ themes:
     nav_label: Housing
     description: Cooperative housing, public land, rights of use and long-term affordability.
     thumbnail:
-      image: /assets/research/research-cover.jpg
-      alt: Research framework showing collective ownership and cooperative housing under rights of use across Europe.
-      secondary_image: /assets/research/publico-article-header.png
-      secondary_alt: PUBLICO article header for “IVA a 6% para todos, e as cooperativas, onde ficam?”, with Marta Maçães Viana’s portrait, name and publication date.
+      slides:
+        - key: cooperative-housing
+          image: /assets/research/research-cover.jpg
+          alt: Research framework showing collective ownership and cooperative housing under rights of use across Europe.
+        - key: publico-cooperatives
+          image: /assets/research/publico-article-header.png
+          alt: PUBLICO article “IVA a 6% para todos, e as cooperativas, onde ficam?”, with Marta Maçães Viana’s portrait, name and publication date.
       caption: EURAU 2026 · PUBLICO
   - id: full-scale
     number: "02"
@@ -132,8 +139,13 @@ themes:
     title: Conferences
     description: Conference presentations and contributions to architectural and housing research.
     thumbnail:
-      image: /assets/research/housing-conference-poster.png
-      alt: Red, yellow and white poster for “Habitação em Portugal — Desafios, Políticas e Caminhos Futuros?”, held on 25–26 June 2026 at ICS, Universidade de Lisboa.
+      slides:
+        - key: housing-conference
+          image: /assets/research/housing-conference-poster.png
+          alt: Red, yellow and white poster for “Habitação em Portugal — Desafios, Políticas e Caminhos Futuros?”, held on 25–26 June 2026 at ICS, Universidade de Lisboa.
+        - key: eurau-conference
+          image: /assets/research/research-cover.jpg
+          alt: Research framework for the cooperative housing contribution to EURAU 2026.
       caption: Habitação em Portugal · Rede-H · 2026
   - id: teaching
     number: "05"

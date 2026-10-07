@@ -3,5 +3,5 @@
     <h1 class="page-title">Research</h1>
     <a class="research-orcid" href="{{ research.orcid | escape }}" rel="me">ORCID →</a>
   </div>
-  <p class="research-affiliation">{{ research.affiliation | escape }}</p>
+  {% if research.page_intro %}<p class="research-affiliation">{{ research.page_intro | escape }}</p>{% endif %}
 </header>

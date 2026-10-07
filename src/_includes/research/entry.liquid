@@ -1,4 +1,4 @@
-<article class="research-entry">
+<article class="research-entry" data-thumbnail-key="{{ publication.id | escape }}">
   <p class="research-kind">{{ publication.kind | escape }}{% if show_year and publication.year %} · {{ publication.year | escape }}{% endif %}</p>
   <h3 class="research-entry__title"{% if publication.title_lang %} lang="{{ publication.title_lang | escape }}"{% endif %}>
     <a href="{{ publication.pdf | default: publication.url | escape }}">{{ publication.title | escape }}</a>

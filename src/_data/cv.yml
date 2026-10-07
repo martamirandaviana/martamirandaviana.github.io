@@ -9,8 +9,8 @@
       text: "**PhD Candidate**, Faculty of Architecture, University of Porto"
     - years: 2025 – Present
       text: "**Researcher**, Centro de Estudos Nuno Portas, Faculty of Architecture, University of Porto"
-    - years: January – August 2026
-      text: "**Assistant professor**, “Implantação de Obras e Estruturas”, CTeSP Intelligent and Sustainable Construction, [Universidade Politécnica do Cávado e do Ave](https://ipca.pt/)"
+    # These positions are shared with the Research page.
+    - research_source: teaching
     - years: 2024 – Present
       text: Member of the Portuguese Architecture Collegiate, n.º 29360
     - years: 2024 – 2025
@@ -26,13 +26,7 @@
       text: "Researcher: 1 to 1 Scale and Architecture Disclosure. Scientific article for UOU Journal ([ORCID](https://orcid.org/0000-0002-9994-7610))"
 
 - title: Publications
-  entries:
-    - years: "2022"
-      text: "*“The Potential of the 1:1 Scale: Devices for Experimentation and Communication in Architecture.”* Master’s thesis, Faculty of Architecture, University of Porto."
-      note: "[University of Porto repository](https://repositorio-aberto.up.pt/handle/10216/143091)"
-    - years: "2021"
-      text: "Neiva, Ana; Viana, Marta; Gomes, João Nuno. “[Petites Folies – Other Landscapes over Douro](https://doi.org/10.14198/uou.2021.2.08).” *UOU Scientific Journal*, No. 2."
-      note: "DOI: [10.14198/uou.2021.2.08](https://doi.org/10.14198/uou.2021.2.08)"
+  research_source: publications
 
 - title: Politics and volunteering
   entries:

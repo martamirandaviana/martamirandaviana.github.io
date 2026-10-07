@@ -9,6 +9,8 @@ location: Apúlia, Esposende, Portugal
 type: Renovation
 cover: P5_Capa1.jpg
 cover_alt: Rendering of a bathroom with a floating cream vanity, round vessel sink and round mirror on pink plaster.
+hero: P5_02.jpg
+hero_alt: Timber staircase beside a slatted wood screen, suspended black lamp and shelf with plants in the Sea House entrance.
 gallery:
   - src: P5_00.jpg
     alt: Mood board pairing sea foam with paintings by Van Gogh and Michelangelo as concept references.

@@ -1,4 +1,4 @@
-<article class="research-entry">
+<article class="research-entry" data-thumbnail-key="{{ conference.id | escape }}">
   <p class="research-kind">Conference · {{ conference.year | escape }}</p>
   <h3 class="research-entry__title"{% if conference.title_lang %} lang="{{ conference.title_lang | escape }}"{% endif %}>{{ conference.title | escape }}</h3>
   {% if conference.venue %}<p class="research-venue">{{ conference.venue | escape }}</p>{% endif %}

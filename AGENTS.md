@@ -107,6 +107,8 @@ collaborators: Name One, Name Two        # optional
 photography: Photographer Name           # optional
 cover: P5_Capa1.jpg                      # square cover image (crop to 1:1 is best)
 cover_alt: What the cover image shows.
+hero: P5_02.jpg                         # optional: different home slideshow image
+hero_alt: What the home slideshow image shows.
 gallery:                                 # photos in page order
   - src: P5_00.jpg
     alt: What the photo shows.           # required, one sentence
@@ -128,6 +130,7 @@ To rename a project folder that is already live, add the old URL to
 ## Other content
 
 - About text: `src/about.md`. CV: `src/_data/cv.yml` (Markdown allowed in `text` and `note`).
+- Research records: `src/_data/research.yml`. About's Publications, Conferences and teaching positions are generated from these same records by the `researchCV` filter. Edit them in Research rather than duplicating them in `cv.yml`; preserve the About biography and layout unless Marta requests changes.
 - Email, social links, home page intro, menu: `src/_data/site.yml`.
 - Button and label text: `src/_data/i18n.yml`.
 - Contact form: posts to Formspree (`form_endpoint` in `site.yml`).

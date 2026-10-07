@@ -12,3 +12,6 @@ if (document.querySelector("[data-lightbox]")) {
 if (document.querySelector("[data-contact-form]")) {
   import("./contact.js").then((m) => m.initContactForm());
 }
+if (document.querySelector("[data-research-carousel]")) {
+  import("./research.js").then((m) => m.initResearchThumbnails());
+}

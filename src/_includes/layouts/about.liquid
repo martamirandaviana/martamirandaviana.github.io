@@ -14,7 +14,8 @@ layout: layouts/base.liquid
 </div>
 
 <div class="cv wrap">
-  {%- for section in cv %}
+  {%- assign shared_cv = cv | researchCV: research -%}
+  {%- for section in shared_cv %}
   <section class="cv__section" aria-labelledby="cv-{{ forloop.index }}">
     <h2 class="cv__title" id="cv-{{ forloop.index }}">{{ section.title }}</h2>
     <ul class="cv__list">

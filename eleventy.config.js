@@ -3,6 +3,7 @@ import path from "node:path";
 import YAML from "yaml";
 import markdownIt from "markdown-it";
 import Image, { generateHTML } from "@11ty/eleventy-img";
+import { researchCV } from "./scripts/research-cv.mjs";
 
 // Widths that the image pipeline makes for each photo. The largest width
 // serves high-resolution desktop screens; smaller ones serve phones.
@@ -68,6 +69,7 @@ export default function (eleventyConfig) {
 
   // Inline Markdown, for short strings in data files (for example the CV).
   eleventyConfig.addFilter("md", (str) => (str ? md.renderInline(String(str)) : ""));
+  eleventyConfig.addFilter("researchCV", researchCV);
   eleventyConfig.addFilter("absoluteUrl", (url, base) => new URL(url, base).href);
   // Inline an SVG file from src/assets/img/, hidden from screen readers.
   eleventyConfig.addFilter("svg", (name) => {
@@ -103,10 +105,10 @@ export default function (eleventyConfig) {
 
   // {% hero project, index %} — one slide of the home page hero.
   eleventyConfig.addAsyncShortcode("hero", async function (project, index) {
-    const metadata = await processImage(project.data.cover, project.inputPath, "hero");
+    const metadata = await processImage(project.data.hero ?? project.data.cover, project.inputPath, "hero");
     const attrs = index === 0 ? { loading: "eager", fetchpriority: "high" } : {};
     // Desktop photographs span the content width; phones use a square frame.
-    return pictureHTML(metadata, project.data.cover_alt, "(min-width: 64.5em) 984px, (min-width: 48em) calc(100vw - 48px), calc(100vw - 32px)", attrs);
+    return pictureHTML(metadata, project.data.hero_alt ?? project.data.cover_alt, "(min-width: 64.5em) 984px, (min-width: 48em) calc(100vw - 48px), calc(100vw - 32px)", attrs);
   });
 
   // {% ogImage src, inputPath %} — URL path of a 1200 px JPEG for link previews.

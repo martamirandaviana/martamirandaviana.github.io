@@ -10,12 +10,19 @@
     <header class="research-theme-head">
       <p class="research-theme-number">{{ theme.number | escape }}</p>
       <h2 id="theme-title-{{ theme.id | escape }}">{{ theme.title | escape }}</h2>
-      {% if theme.thumbnail.image %}
+      {% if theme.thumbnail.image or theme.thumbnail.slides %}
       <figure class="research-theme-thumbnail">
-        <div class="research-theme-visual{% if theme.thumbnail.secondary_image %} research-theme-visual--composite{% endif %}">
+        <div class="research-theme-visual{% if theme.thumbnail.slides %} research-theme-visual--carousel{% endif %}"{% if theme.thumbnail.slides %} data-research-carousel{% endif %}>
+          {% if theme.thumbnail.slides %}
+          {% for slide in theme.thumbnail.slides %}
+          <div class="research-thumbnail-slide{% if forloop.first %} is-active{% endif %}" data-thumbnail-key="{{ slide.key | escape }}"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+            {% picture slide.image, slide.alt, "(min-width: 48em) 312px, calc(100vw - 32px)", "card" %}
+          </div>
+          {% endfor %}
+          <button class="research-thumbnail-next" type="button" aria-label="Show next {{ theme.nav_label | default: theme.title | downcase | escape }} image" hidden></button>
+          <button class="research-thumbnail-pause" type="button" aria-label="Pause {{ theme.nav_label | default: theme.title | downcase | escape }} images" aria-pressed="false" hidden>Pause</button>
+          {% else %}
           {% picture theme.thumbnail.image, theme.thumbnail.alt, "(min-width: 48em) 312px, calc(100vw - 48px)", "card" %}
-          {% if theme.thumbnail.secondary_image %}
-          {% picture theme.thumbnail.secondary_image, theme.thumbnail.secondary_alt, "(min-width: 48em) 172px, 55vw", "card" %}
           {% endif %}
         </div>
         <figcaption>{{ theme.thumbnail.caption | escape }}</figcaption>
