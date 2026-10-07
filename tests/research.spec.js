@@ -11,11 +11,83 @@ const options = [
 ];
 const title = /Collective Ownership and Cooperative Housing under Rights of Use/;
 
+async function useWideThumbnails(page) {
+  // Phone topics have static covers; the interactive carousel belongs to the wide layout.
+  if (page.viewportSize().width < 768) await page.setViewportSize({ width: 1024, height: 1024 });
+}
+
+async function openHousingTopic(page) {
+  if (page.viewportSize().width < 768 && await page.locator("#housing.research-theme").count()) {
+    const summary = page.locator("#housing .research-topic-details > summary");
+    await expect(summary).toBeVisible();
+    await summary.click();
+  }
+}
+
+test("phone topics start collapsed, use equal covers and open with the keyboard", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/research/");
+  const topics = page.locator(".research-topic-details");
+  await expect(topics).toHaveCount(5);
+  await expect(page.locator(".research-topic-nav")).toBeHidden();
+  for (const topic of await topics.all()) {
+    await expect(topic).not.toHaveAttribute("open");
+    await expect(topic.locator(".research-theme-entries")).toBeHidden();
+    const cover = await topic.locator(".research-topic-cover").boundingBox();
+    expect(cover.width).toBe(64);
+    expect(cover.height).toBe(96);
+    const summary = topic.locator(":scope > summary");
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(topic).toHaveAttribute("open");
+    await expect(topic.locator(".research-theme-entries")).toBeVisible();
+    await expect(topic.locator(".research-topic-caption")).not.toBeEmpty();
+    await page.keyboard.press("Space");
+    await expect(topic).not.toHaveAttribute("open");
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+});
+
+test("phone topic links open the right section and resizing restores the wide layout", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/research/#teaching");
+  const teaching = page.locator("#teaching .research-topic-details");
+  await expect(teaching).toHaveAttribute("open");
+  await expect(teaching.locator(".research-theme-entries")).toContainText("Assistant professor");
+  await page.evaluate(() => { window.location.hash = "politics"; });
+  await expect(page.locator("#politics .research-topic-details")).toHaveAttribute("open");
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(page.locator(".research-topic-details")).toHaveCount(0);
+  await expect(page.locator(".research-topic-nav")).toBeVisible();
+  for (const theme of await page.locator(".research-theme").all()) {
+    await expect(theme.locator(".research-theme-entries")).toBeVisible();
+    const image = await theme.locator(".research-theme-visual").boundingBox();
+    const text = await theme.locator(".research-theme-entries").boundingBox();
+    expect(Math.abs(image.y + image.height - text.y - text.height)).toBeLessThanOrEqual(1);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator(".research-topic-details")).toHaveCount(5);
+  await expect(page.locator("#politics .research-topic-details")).toHaveAttribute("open");
+});
+
 test("Theme thumbnails share a portrait frame and show complete housing images at narrow widths", async ({ page }) => {
   for (const width of [320, 768]) {
     await page.setViewportSize({ width, height: 1024 });
     await page.goto("/research/");
     await page.evaluate(() => document.fonts.ready);
+    if (width < 768) {
+      await expect(page.locator(".research-topic-cover")).toHaveCount(5);
+      for (const cover of await page.locator(".research-topic-cover").all()) {
+        const bounds = await cover.boundingBox();
+        expect(bounds.width).toBe(64);
+        expect(bounds.height).toBe(96);
+        const image = cover.locator("img");
+        await image.evaluate(img => img.decode());
+        expect(await image.evaluate(img => getComputedStyle(img).objectFit)).toBe("contain");
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+      continue;
+    }
     const carousel = page.locator("#housing [data-research-carousel]");
     await carousel.scrollIntoViewIfNeeded();
     const frame = await carousel.boundingBox();
@@ -44,6 +116,7 @@ test("Theme thumbnails share a portrait frame and show complete housing images a
 });
 
 test("hovering or focusing a housing article selects its matching image", async ({ page }) => {
+  await useWideThumbnails(page);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/research/");
   const housing = page.locator("#housing");
@@ -58,6 +131,7 @@ test("hovering or focusing a housing article selects its matching image", async 
 });
 
 test("thumbnail images crossfade automatically and can be paused", async ({ page }) => {
+  await useWideThumbnails(page);
   await page.clock.install();
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/research/");
@@ -77,6 +151,7 @@ test("thumbnail images crossfade automatically and can be paused", async ({ page
 });
 
 test("reduced motion keeps thumbnails still until the visitor changes them", async ({ page }) => {
+  await useWideThumbnails(page);
   await page.clock.install();
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/research/");
@@ -103,6 +178,7 @@ test("About lists the same publications, conferences and teaching as Research", 
 });
 
 test("swiping a thumbnail changes its image without opening an article", async ({ page }) => {
+  await useWideThumbnails(page);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/research/");
   const frame = page.locator("#housing [data-research-carousel]");
@@ -132,6 +208,7 @@ test("Research is reachable from the navigation", async ({ page, isMobile }) => 
 for (const url of options) {
   test(`${url} shows the articles and supports reading their summaries and PDFs`, async ({ page, request }) => {
     await page.goto(url);
+    await openHousingTopic(page);
     await expect(page.getByRole("heading", { name: title })).toBeVisible();
     await expect(page.getByRole("heading", { name: "IVA a 6% para todos: e as cooperativas, onde ficam?" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Conferences", exact: true })).toBeVisible();

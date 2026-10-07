@@ -1,3 +1,55 @@
+// Native, expandable topics on phones; restore the original grid on larger screens.
+export function initResearchTopics() {
+  const mobile = window.matchMedia("(max-width: 47.99em)");
+  const themes = [...document.querySelectorAll(".research-theme")].map(theme => ({
+    theme,
+    head: theme.querySelector(".research-theme-head"),
+    figure: theme.querySelector(".research-theme-thumbnail"),
+    entries: theme.querySelector(".research-theme-entries"),
+  }));
+  function openLinkedTopic() {
+    const id = window.location.hash.slice(1);
+    const item = themes.find(item => item.theme.id === id);
+    if (item?.details) item.details.open = true;
+  }
+  function updateLayout() {
+    document.body.classList.toggle("research-mobile-topics", mobile.matches);
+    for (const item of themes) {
+      if (mobile.matches && !item.details) {
+        const details = document.createElement("details");
+        details.className = "research-topic-details";
+        const summary = document.createElement("summary");
+        const cover = document.createElement("span");
+        cover.className = "research-topic-cover";
+        cover.setAttribute("aria-hidden", "true");
+        const picture = item.figure.querySelector("picture").cloneNode(true);
+        picture.querySelector("img").alt = "";
+        cover.append(picture);
+        const arrow = document.createElement("span");
+        arrow.className = "research-topic-arrow";
+        arrow.setAttribute("aria-hidden", "true");
+        summary.append(cover, item.head, arrow);
+        const panel = document.createElement("div");
+        panel.className = "research-topic-panel";
+        const caption = document.createElement("p");
+        caption.className = "research-topic-caption";
+        caption.textContent = item.figure.querySelector("figcaption").textContent;
+        panel.append(item.figure, caption, item.entries);
+        details.append(summary, panel);
+        item.theme.replaceChildren(details);
+        item.details = details;
+      } else if (!mobile.matches && item.details) {
+        item.theme.replaceChildren(item.head, item.figure, item.entries);
+        item.details = undefined;
+      }
+    }
+    openLinkedTopic();
+  }
+  mobile.addEventListener("change", updateLayout);
+  window.addEventListener("hashchange", openLinkedTopic);
+  updateLayout();
+}
+
 // Quiet thumbnail crossfades, with article hover/focus selecting the right image.
 export function initResearchThumbnails() {
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
