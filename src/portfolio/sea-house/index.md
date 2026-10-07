@@ -7,8 +7,8 @@ featured: true
 year: 2024
 location: Apúlia, Esposende, Portugal
 type: Renovation
-cover: P5_Capa1.jpg
-cover_alt: Rendering of a bathroom with a floating cream vanity, round vessel sink and round mirror on pink plaster.
+cover: P5_02.jpg
+cover_alt: Timber staircase beside a slatted wood screen, suspended black lamp and shelf with plants in the Sea House entrance.
 hero: P5_02.jpg
 hero_alt: Timber staircase beside a slatted wood screen, suspended black lamp and shelf with plants in the Sea House entrance.
 gallery:

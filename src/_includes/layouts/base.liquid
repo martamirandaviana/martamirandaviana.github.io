@@ -9,7 +9,7 @@
 {%- if cover -%}
   {%- capture og_path %}{% ogImage cover, page.inputPath %}{% endcapture -%}
 {%- else -%}
-  {%- assign og_path = "/assets/img/og-default.jpg" -%}
+  {%- assign og_path = "/assets/img/og-mrt-white.png" -%}
 {%- endif -%}
 <!doctype html>
 <html lang="{{ site.lang }}">
@@ -36,7 +36,15 @@
   <meta property="og:description" content="{{ page_description | escape }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:image" content="{{ og_path | strip | absoluteUrl: site.url }}">
+  <meta property="og:image:alt" content="{{ cover_alt | default: 'MRT architecture logo on a white background' | escape }}">
+  {%- unless cover %}
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  {%- endunless %}
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ og_path | strip | absoluteUrl: site.url }}">
+  <meta name="twitter:image:alt" content="{{ cover_alt | default: 'MRT architecture logo on a white background' | escape }}">
 
   <script>document.documentElement.classList.add("js")</script>
   <link rel="preload" href="/assets/fonts/geograph-regular.woff2" as="font" type="font/woff2" crossorigin>

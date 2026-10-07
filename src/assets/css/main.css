@@ -421,6 +421,7 @@
     overflow: hidden;
     background: var(--paper-2);
   }
+  .card__media picture { width: 100%; height: 100%; }
   .card__media img {
     width: 100%;
     height: 100%;
@@ -969,7 +970,7 @@
     border-bottom: 1px solid var(--line);
   }
   .cv__entry:first-child { padding-top: 0.35rem; }
-  .cv__section:first-child .cv__entry:last-child { border-bottom: 0; }
+  .cv__entry:last-child { border-bottom: 0; }
   @media (min-width: 40em) {
     .cv__entry { grid-template-columns: 8.5rem 1fr; }
   }
