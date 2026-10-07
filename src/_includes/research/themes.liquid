@@ -10,6 +10,7 @@
     <header class="research-theme-head">
       <p class="research-theme-number">{{ theme.number | escape }}</p>
       <h2 id="theme-title-{{ theme.id | escape }}">{{ theme.title | escape }}</h2>
+    </header>
       {% if theme.thumbnail.image or theme.thumbnail.slides %}
       <figure class="research-theme-thumbnail">
         <div class="research-theme-visual{% if theme.thumbnail.slides %} research-theme-visual--carousel{% endif %}"{% if theme.thumbnail.slides %} data-research-carousel{% endif %}>
@@ -28,7 +29,6 @@
         <figcaption>{{ theme.thumbnail.caption | escape }}</figcaption>
       </figure>
       {% endif %}
-    </header>
     <div class="research-theme-entries">
       {% if theme.id == "conferences" %}
       {% for conference in research.conferences %}{% include "research/conference-entry.liquid" %}{% endfor %}
