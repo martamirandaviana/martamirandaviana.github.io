@@ -11,7 +11,7 @@ const options = [
 ];
 const title = /Collective Ownership and Cooperative Housing under Rights of Use/;
 
-test("Theme thumbnails share a square frame and show complete housing images at narrow widths", async ({ page }) => {
+test("Theme thumbnails share a portrait frame and show complete housing images at narrow widths", async ({ page }) => {
   for (const width of [320, 768]) {
     await page.setViewportSize({ width, height: 1024 });
     await page.goto("/research/");
@@ -22,7 +22,8 @@ test("Theme thumbnails share a square frame and show complete housing images at 
     for (const visual of await page.locator(".research-theme-visual").all()) {
       const bounds = await visual.boundingBox();
       expect(Math.abs(bounds.width - frame.width)).toBeLessThanOrEqual(1);
-      expect(Math.abs(bounds.height - bounds.width)).toBeLessThanOrEqual(1);
+      expect(Math.abs(bounds.height - frame.height)).toBeLessThanOrEqual(1);
+      expect(Math.abs(bounds.height - bounds.width * 1.5)).toBeLessThanOrEqual(1);
     }
     await expect(carousel.locator(".research-thumbnail-slide")).toHaveCount(2);
     for (let i = 0; i < 2; i++) {

@@ -1116,7 +1116,7 @@
   .research-dossier-library .research-entry__title { font-size: 1rem; }
 
   /* 4. A thematic archive linking housing policy with full-scale practice. */
-  .research-topic-nav { --topic-gap: clamp(1rem, 2vw, 1.75rem); padding-bottom: 1rem; font-size: var(--step--1); }
+  .research-topic-nav { --topic-gap: clamp(1rem, 2vw, 1.75rem); padding-bottom: var(--space-l); font-size: var(--step--1); }
   .research-topic-nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem var(--topic-gap); list-style: none; padding: 0.3125rem 0; margin-block: -0.3125rem; overflow: hidden; }
   .research-topic-nav li { position: relative; }
   .research-topic-nav li + li::before { content: ""; position: absolute; inset-inline-start: calc(var(--topic-gap) / -2); top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--muted); transform: translate(-50%, -50%); }
@@ -1134,7 +1134,7 @@
   .research-theme-head h2 { font-size: var(--title-section); line-height: 1.3; }
   .research-theme-thumbnail { grid-column: 1 / -1; margin-top: var(--space-m); }
   .research-theme-thumbnail figcaption { font-size: var(--step--1); color: var(--muted); margin-top: var(--space-xs); }
-  .research-theme-visual { width: 100%; aspect-ratio: 1; background: var(--paper); overflow: hidden; }
+  .research-theme-visual { width: 100%; aspect-ratio: 2 / 3; background: var(--paper); overflow: hidden; }
   .research-theme-visual picture, .research-theme-visual img { display: block; width: 100%; height: 100%; min-width: 0; }
   .research-theme-visual img { object-fit: cover; }
   #politics .research-theme-visual img { object-position: center 44%; }
@@ -1151,10 +1151,12 @@
   .research-theme-entries { min-width: 0; }
   .research-theme-entries .research-entry + .research-entry { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
   @media (min-width: 48em) {
-    #housing .research-theme-head { grid-template-rows: auto minmax(0, 1fr); }
-    #housing .research-theme-thumbnail { display: flex; flex-direction: column; gap: var(--space-xs); }
-    #housing .research-theme-visual { flex-shrink: 0; }
-    #housing .research-theme-thumbnail figcaption { margin-top: auto; }
+    .research-theme { grid-template-rows: auto auto auto; row-gap: var(--space-xs); }
+    .research-theme-head { grid-row: 1 / -1; grid-template-rows: subgrid; row-gap: var(--space-xs); }
+    .research-theme-thumbnail { grid-row: 2 / -1; display: grid; grid-template-rows: subgrid; row-gap: var(--space-xs); margin-top: calc(var(--space-m) - var(--space-xs)); }
+    .research-theme-visual { align-self: end; }
+    .research-theme-thumbnail figcaption { margin-top: 0; }
+    .research-theme-entries { grid-column: 2; grid-row: 1 / 3; align-self: end; }
   }
   @media (max-width: 47.99em) {
     .research-topic-nav ul { justify-content: flex-start; }
