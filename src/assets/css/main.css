@@ -38,6 +38,8 @@
   --title-section: clamp(1.625rem, 1.4rem + 0.8vw, 2rem);
   --title-article: clamp(1.375rem, 1.2rem + 0.5vw, 1.5rem);
   --tracking: 0.02em;
+  --nav-underline-offset: 0.12em;
+  --research-thumbnail-ratio: 3 / 2;
 
   /* Space */
   --gutter: clamp(1rem, 3vw, 1.5rem);
@@ -202,16 +204,18 @@
     padding: 0;
   }
   .site-nav a {
+    display: inline-block;
     font-size: var(--step-0);
     letter-spacing: 0;
     text-transform: none;
     text-decoration: none;
-    padding-block: 0.5rem;
-    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
-    transition: background-size 0.35s var(--ease);
+    padding-block: 0.25rem;
+    text-decoration-thickness: 1px;
+    text-decoration-color: currentColor;
+    text-underline-offset: var(--nav-underline-offset);
   }
   .site-nav a:hover,
-  .site-nav a[aria-current="page"] { background-size: 100% 1px; }
+  .site-nav a[aria-current="page"] { text-decoration-line: underline; }
 
   .menu-toggle {
     display: none;
@@ -865,7 +869,18 @@
     padding-bottom: var(--space-xl);
   }
   .project-text { max-width: none; width: 100%; }
-  .project-text p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .project-text p {
+    text-align: justify;
+    text-align-last: start;
+    text-justify: inter-word;
+    /* The build supplies optional word breaks, also with JavaScript off.
+       Use those consistent breaks rather than the device's dictionary. */
+    hyphens: manual;
+    -webkit-hyphens: manual;
+    text-wrap: auto;
+    word-spacing: normal;
+    letter-spacing: normal;
+  }
   .project-body .facts { border-bottom: 1px solid var(--line); }
   .project-body .facts > div:last-child { border-bottom: 0; }
   @media (min-width: 60em) {
@@ -1134,15 +1149,24 @@
   .research-theme-head h2 { font-size: var(--title-section); line-height: 1.3; }
   .research-theme-thumbnail { grid-column: 1 / -1; }
   .research-theme-thumbnail figcaption { font-size: var(--step--1); color: var(--muted); margin-top: var(--space-xs); }
-  .research-theme-visual { width: 100%; aspect-ratio: 2 / 3; background: var(--paper); overflow: hidden; }
+  .research-theme-visual { width: 100%; aspect-ratio: var(--research-thumbnail-ratio); background: var(--paper); overflow: hidden; }
   .research-theme-visual picture, .research-theme-visual img { display: block; width: 100%; height: 100%; min-width: 0; }
   .research-theme-visual img { object-fit: cover; }
-  #politics .research-theme-visual img { object-position: center 44%; }
-  #conferences .research-theme-visual img { object-position: center 55%; }
+  #housing .research-topic-cover img { object-position: center bottom; }
+  #politics .research-theme-visual img, #politics .research-topic-cover img { object-position: center 83%; }
   .research-theme-visual--carousel { position: relative; }
   .research-thumbnail-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 0.8s var(--ease), visibility 0s 0.8s; }
   .research-thumbnail-slide.is-active { opacity: 1; visibility: visible; transition: opacity 0.8s var(--ease); }
-  .research-thumbnail-slide img { object-fit: contain; }
+  .research-thumbnail-slide img { object-fit: cover; }
+  .research-thumbnail-slide[data-thumbnail-key="cooperative-housing"] img { object-position: center bottom; }
+  .research-thumbnail-slide[data-thumbnail-key="publico-cooperatives"] img { object-position: center top; }
+  .research-thumbnail-slide[data-thumbnail-key="publico-anniversary-cooperatives"] img { object-position: left center; }
+  .research-thumbnail-slide[data-thumbnail-key="housing-conference"] img { object-position: center 72%; }
+  .research-thumbnail-slide[data-thumbnail-key="eurau-conference"] img { object-position: center bottom; }
+  .research-thumbnail-slide[data-thumbnail-key="affordable-housing-policy-assembly"] img,
+  #conferences .research-topic-cover img { object-position: left center; }
+  .research-thumbnail-slide[data-thumbnail-key="european-affordable-housing-plan"] img { object-position: left center; }
+  .research-thumbnail-slide[data-thumbnail-key="enhr-new-housing-researchers"] img { object-fit: contain; }
   .research-thumbnail-next { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: none; }
   .research-thumbnail-next:focus-visible { outline-offset: -3px; }
   .research-thumbnail-pause { position: absolute; top: var(--space-xs); right: var(--space-xs); border: 0; padding: 0.3rem 0.6rem; background: var(--paper); color: var(--ink); font-size: var(--step--1); opacity: 0; transition: opacity 0.2s; }
@@ -1174,8 +1198,8 @@
     .research-topic-details .research-theme-head { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0; }
     .research-topic-details .research-theme-head h2 { font-size: var(--title-article); }
     .research-topic-details .research-theme-number { font-size: var(--step--1); }
-    .research-topic-cover { width: 4rem; aspect-ratio: 2 / 3; background: var(--paper); }
-    .research-topic-cover picture, .research-topic-cover img { width: 100%; height: 100%; object-fit: contain; }
+    .research-topic-cover { width: 4rem; aspect-ratio: var(--research-thumbnail-ratio); background: var(--paper); overflow: hidden; }
+    .research-topic-cover picture, .research-topic-cover img { width: 100%; height: 100%; object-fit: cover; }
     .research-topic-arrow { font-size: var(--step-2); text-align: center; }
     .research-topic-arrow::before { content: "+"; }
     .research-topic-details[open] .research-topic-arrow::before { content: "−"; }

@@ -36,6 +36,20 @@ publications:
     pdf: /assets/research/papers/publico-2026-housing-cooperatives.pdf
     url: https://www.publico.pt/2026/03/17/opiniao/opiniao/iva-6-cooperativas-onde-ficam-2167952
     url_label: Read at PUBLICO
+  - id: publico-anniversary-cooperatives
+    year: 2026
+    kind: Press contribution
+    title: Contra o “pessimismo” e o “engano”, as cooperativas renascem e resistem
+    title_lang: pt
+    authors: Rafaela Burd Relvas (text) · Nuno Ferreira Santos (photography)
+    contribution: Expert commentary by Marta Maçães Viana
+    venue: PUBLICO · 36th anniversary · A Minha Casa
+    detail: 5 March 2026 · Edition directed by Eduardo Souto de Moura
+    language: Portuguese
+    theme: housing
+    summary: A report on the renewal of housing cooperatives in Portugal and the challenges of financing, access to land and public support. Marta Maçães Viana contributes research insights on the cooperatives that remain active and the potential of European policy to support the sector.
+    citation: "Relvas, Rafaela Burd. “Contra o ‘pessimismo’ e o ‘engano’, as cooperativas renascem e resistem.” PUBLICO, 36th anniversary, A Minha Casa, 5 March 2026. Photography by Nuno Ferreira Santos; expert commentary by Marta Maçães Viana."
+    pdf: /assets/research/papers/publico-2026-anniversary-cooperatives.pdf
   - id: full-scale-thesis
     year: 2022
     kind: Master’s thesis
@@ -83,6 +97,14 @@ teaching:
     dates: January–August 2026
     programme: CTeSP Intelligent and Sustainable Construction
 conferences:
+  - id: affordable-housing-policy-assembly
+    year: 2026
+    kind: Online seminar
+    title: European Policy Assembly on Affordable Housing
+    venue: Online
+    role: Attended
+    date: 22 September 2026
+    note: Funded by the European Union.
   - id: housing-conference
     year: 2026
     title: "Habitação em Portugal: Desafios, Políticas e Caminhos Futuros?"
@@ -102,6 +124,23 @@ conferences:
     work: Collective ownership and cooperative housing under rights of use
     authors: Marta Maçães Viana · Gisela Lameira
     pdf: /assets/research/papers/eurau-2026-cooperative-housing.pdf
+  - id: european-affordable-housing-plan
+    year: 2026
+    kind: Online seminar
+    title: European Affordable Housing Plan
+    venue: Online
+    organizer: European Commission
+    role: Attended
+    date: 14 April 2026
+  - id: enhr-new-housing-researchers
+    year: 2026
+    kind: Online seminar
+    title: 5th ENHR Online Seminar for New Housing Researchers
+    venue: Online
+    organizer: European Network for Housing Research (ENHR)
+    role: Attended
+    date: 11 March 2026
+    note: Seminar held on 10–11 March 2026.
 themes:
   - id: housing
     number: "01"
@@ -116,6 +155,9 @@ themes:
         - key: publico-cooperatives
           image: /assets/research/publico-article-header.png
           alt: PUBLICO article “IVA a 6% para todos, e as cooperativas, onde ficam?”, with Marta Maçães Viana’s portrait, name and publication date.
+        - key: publico-anniversary-cooperatives
+          image: /assets/research/publico-36-anniversary-cover.png
+          alt: PUBLICO’s 36th-anniversary front page dated 5 March 2026, with colourful drawings of houses by schoolchildren.
       caption: EURAU 2026 · PUBLICO
   - id: full-scale
     number: "02"
@@ -140,13 +182,23 @@ themes:
     description: Conference presentations and contributions to architectural and housing research.
     thumbnail:
       slides:
+        - key: affordable-housing-policy-assembly
+          image: /assets/research/european-policy-assembly.png
+          alt: Blue banner for the European Policy Assembly on Affordable Housing, with its speakers, housing photographs and European Union funding credit.
         - key: housing-conference
           image: /assets/research/housing-conference-poster.png
           alt: Red, yellow and white poster for “Habitação em Portugal — Desafios, Políticas e Caminhos Futuros?”, held on 25–26 June 2026 at ICS, Universidade de Lisboa.
         - key: eurau-conference
           image: /assets/research/research-cover.jpg
           alt: Research framework for the cooperative housing contribution to EURAU 2026.
-      caption: Habitação em Portugal · Rede-H · 2026
+        - key: european-affordable-housing-plan
+          image: /assets/research/european-affordable-housing-plan.png
+          alt: European Commission banner introducing the European Affordable Housing Plan, with a photograph of two people at home.
+        - key: enhr-new-housing-researchers
+          image: /assets/research/enhr-seminar-logo.png
+          original: true
+          alt: ENHR logo with the full name European Network for Housing Research in red beneath grey letters.
+      caption: Conferences & online seminars · 2026
   - id: teaching
     number: "05"
     title: Teaching

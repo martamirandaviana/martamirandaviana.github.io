@@ -17,7 +17,11 @@
           {% if theme.thumbnail.slides %}
           {% for slide in theme.thumbnail.slides %}
           <div class="research-thumbnail-slide{% if forloop.first %} is-active{% endif %}" data-thumbnail-key="{{ slide.key | escape }}"{% unless forloop.first %} aria-hidden="true"{% endunless %}>
+            {% if slide.original %}
+            <picture><img src="{{ slide.image | escape }}" alt="{{ slide.alt | escape }}" loading="lazy" decoding="async"></picture>
+            {% else %}
             {% picture slide.image, slide.alt, "(min-width: 48em) 312px, calc(100vw - 32px)", "card" %}
+            {% endif %}
           </div>
           {% endfor %}
           <button class="research-thumbnail-next" type="button" aria-label="Show next {{ theme.nav_label | default: theme.title | downcase | escape }} image" hidden></button>

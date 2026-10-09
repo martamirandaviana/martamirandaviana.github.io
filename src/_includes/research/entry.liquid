@@ -4,6 +4,7 @@
     <a href="{{ publication.pdf | default: publication.url | escape }}">{{ publication.title | escape }}</a>
   </h3>
   {% if publication.authors %}<p class="research-authors">{{ publication.authors | escape }}</p>{% endif %}
+  {% if publication.contribution %}<p class="research-authors">{{ publication.contribution | escape }}</p>{% endif %}
   {% if publication.venue %}<p class="research-venue">{{ publication.venue | escape }}</p>{% endif %}
   {% if publication.detail or publication.language %}<p class="research-meta">{{ publication.detail | escape }}{% if publication.detail and publication.language %} · {% endif %}{{ publication.language | escape }}</p>{% endif %}
   {% include "research/actions.liquid" %}

@@ -10,6 +10,7 @@ const options = [
   "/research/previews/themes/",
 ];
 const title = /Collective Ownership and Cooperative Housing under Rights of Use/;
+const housingSlides = YAML.parse(fs.readFileSync("src/_data/research.yml", "utf8")).themes.find(theme => theme.id === "housing").thumbnail.slides;
 
 async function useWideThumbnails(page) {
   // Phone topics have static covers; the interactive carousel belongs to the wide layout.
@@ -35,7 +36,7 @@ test("phone topics start collapsed, use equal covers and open with the keyboard"
     await expect(topic.locator(".research-theme-entries")).toBeHidden();
     const cover = await topic.locator(".research-topic-cover").boundingBox();
     expect(cover.width).toBe(64);
-    expect(cover.height).toBe(96);
+    expect(Math.abs(cover.height - cover.width / 1.5)).toBeLessThanOrEqual(1);
     const summary = topic.locator(":scope > summary");
     await summary.focus();
     await page.keyboard.press("Enter");
@@ -70,7 +71,7 @@ test("phone topic links open the right section and resizing restores the wide la
   await expect(page.locator("#politics .research-topic-details")).toHaveAttribute("open");
 });
 
-test("Theme thumbnails share a portrait frame and show complete housing images at narrow widths", async ({ page }) => {
+test("Theme thumbnails fill equal landscape frames at narrow widths", async ({ page }) => {
   for (const width of [320, 768]) {
     await page.setViewportSize({ width, height: 1024 });
     await page.goto("/research/");
@@ -80,10 +81,10 @@ test("Theme thumbnails share a portrait frame and show complete housing images a
       for (const cover of await page.locator(".research-topic-cover").all()) {
         const bounds = await cover.boundingBox();
         expect(bounds.width).toBe(64);
-        expect(bounds.height).toBe(96);
+        expect(Math.abs(bounds.height - bounds.width / 1.5)).toBeLessThanOrEqual(1);
         const image = cover.locator("img");
         await image.evaluate(img => img.decode());
-        expect(await image.evaluate(img => getComputedStyle(img).objectFit)).toBe("contain");
+        expect(await image.evaluate(img => getComputedStyle(img).objectFit)).toBe("cover");
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
       continue;
@@ -95,15 +96,16 @@ test("Theme thumbnails share a portrait frame and show complete housing images a
       const bounds = await visual.boundingBox();
       expect(Math.abs(bounds.width - frame.width)).toBeLessThanOrEqual(1);
       expect(Math.abs(bounds.height - frame.height)).toBeLessThanOrEqual(1);
-      expect(Math.abs(bounds.height - bounds.width * 1.5)).toBeLessThanOrEqual(1);
+      expect(Math.abs(bounds.height - bounds.width / 1.5)).toBeLessThanOrEqual(1);
     }
-    await expect(carousel.locator(".research-thumbnail-slide")).toHaveCount(2);
-    for (let i = 0; i < 2; i++) {
+    await expect(carousel.locator(".research-thumbnail-slide")).toHaveCount(housingSlides.length);
+    for (const slide of housingSlides) {
+      await expect(carousel.locator(".research-thumbnail-slide.is-active")).toHaveAttribute("data-thumbnail-key", slide.key);
       const image = carousel.locator(".research-thumbnail-slide.is-active img");
       await expect(image).toBeVisible();
       await image.evaluate(img => img.decode());
       expect(await image.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
-      expect(await image.evaluate(img => getComputedStyle(img).objectFit)).toBe("contain");
+      expect(await image.evaluate(img => getComputedStyle(img).objectFit)).toBe("cover");
       const bounds = await image.boundingBox();
       expect(bounds.x).toBeGreaterThanOrEqual(frame.x);
       expect(bounds.x + bounds.width).toBeLessThanOrEqual(frame.x + frame.width + 1);
@@ -128,6 +130,8 @@ test("hovering or focusing a housing article selects its matching image", async 
   await expect(active).toHaveAttribute("data-thumbnail-key", "cooperative-housing");
   await iva.locator("h3 a").focus();
   await expect(active).toHaveAttribute("data-thumbnail-key", "publico-cooperatives");
+  await housing.locator('.research-entry[data-thumbnail-key="publico-anniversary-cooperatives"] h3 a').focus();
+  await expect(active).toHaveAttribute("data-thumbnail-key", "publico-anniversary-cooperatives");
 });
 
 test("thumbnail images crossfade automatically and can be paused", async ({ page }) => {

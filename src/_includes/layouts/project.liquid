@@ -28,7 +28,7 @@ layout: layouts/base.liquid
 
   <div class="project-body wrap">
     <div class="prose project-text">
-      {{ content }}
+      {{ content | hyphenatedProse }}
     </div>
     <dl class="facts">
       {%- if year %}<div><dt>{{ t.year }}</dt><dd>{{ year }}</dd></div>{% endif %}

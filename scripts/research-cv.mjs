@@ -7,7 +7,7 @@ export function researchCV(cv, research) {
   const publications = (research.publications ?? []).map(item => ({
     years: String(item.year),
     text: `${escape(item.authors)}. “${link(item.title, item.url ?? item.pdf)}.” ${escape(item.venue)}.`,
-    note: [item.kind, item.detail, item.language].filter(Boolean).map(escape).join(" · "),
+    note: [item.kind, item.contribution, item.detail, item.language].filter(Boolean).map(escape).join(" · "),
   }));
   const teaching = (research.teaching ?? []).map(item => ({
     years: item.dates ?? String(item.year),
