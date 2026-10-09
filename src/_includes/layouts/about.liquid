@@ -9,7 +9,7 @@ layout: layouts/base.liquid
     {% picture portrait, portrait_alt, "(min-width: 60em) 30vw, 100vw", "gallery", "", true %}
   </figure>
   <div class="about__bio prose">
-    {{ content }}
+    {{ content | hyphenatedProse }}
   </div>
 </div>
 
