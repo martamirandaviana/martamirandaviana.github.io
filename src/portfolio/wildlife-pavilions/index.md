@@ -2,7 +2,7 @@
 title: Wildlife Pavilions
 subtitle: International Competition TerraViva
 description: Three pavilions for the Riserva Naturale delle Torbiere del Sebino. Honorable Mention in the TerraViva Wildlife Pavilions competition, 2023.
-order: 4
+order: 3
 featured: true
 year: 2023
 location: Torbiere del Sebino, Italy
