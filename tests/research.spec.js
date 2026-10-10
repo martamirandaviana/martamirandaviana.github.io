@@ -64,7 +64,7 @@ test("phone topic links open the right section and resizing restores the wide la
     await expect(theme.locator(".research-theme-entries")).toBeVisible();
     const image = await theme.locator(".research-theme-visual").boundingBox();
     const text = await theme.locator(".research-theme-entries").boundingBox();
-    expect(Math.abs(image.y + image.height - text.y - text.height)).toBeLessThanOrEqual(1);
+    expect(Math.abs(image.y - text.y)).toBeLessThanOrEqual(1);
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.locator(".research-topic-details")).toHaveCount(5);
