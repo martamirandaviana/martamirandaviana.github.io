@@ -185,15 +185,14 @@ themes:
           original: true
           alt: ENHR logo with the full name European Network for Housing Research in red beneath grey letters.
       caption: Conferences & online seminars · 2026
-  - id: full-scale
+  - id: teaching
     number: "03"
-    title: Architecture at 1:1
-    nav_label: Architecture devices
-    description: Full-scale experimentation, communication and shared public space.
+    title: Teaching
+    description: Teaching experience in construction and structures.
     thumbnail:
-      image: /portfolio/petites-folies/P2_Capa.jpg
-      alt: Visitors using the blue steel Petites Folies installation among trees beside a white building in Porto.
-      caption: Petites Folies · Photograph by Alexander Bogorodskiy
+      image: /assets/research/upca-logo.png
+      alt: White UPCA logo on a green background for Universidade Politécnica do Cávado e do Ave.
+      caption: Universidade Politécnica do Cávado e do Ave
   - id: politics
     number: "04"
     title: Politics
@@ -202,11 +201,12 @@ themes:
       image: /assets/research/eu-voto-cover.jpeg
       alt: Eu Voto cover for “A paridade não se esgota nas listas”, with Marta Maçães Viana’s portrait on a purple background.
       caption: Eu Voto · Eu voto, eu opino
-  - id: teaching
+  - id: full-scale
     number: "05"
-    title: Teaching
-    description: Teaching experience in construction and structures.
+    title: Architecture at 1:1
+    nav_label: Architecture devices
+    description: Full-scale experimentation, communication and shared public space.
     thumbnail:
-      image: /assets/research/upca-logo.png
-      alt: White UPCA logo on a green background for Universidade Politécnica do Cávado e do Ave.
-      caption: Universidade Politécnica do Cávado e do Ave
+      image: /portfolio/petites-folies/P2_Capa.jpg
+      alt: Visitors using the blue steel Petites Folies installation among trees beside a white building in Porto.
+      caption: Petites Folies · Photograph by Alexander Bogorodskiy
