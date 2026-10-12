@@ -39,6 +39,6 @@ gallery:
     alt: Visitors and performers enjoying the completed Petites Folies installations across Porto.
 ---
 
-Participated in the Biennale by documenting and researching the event’s impact. Contributed to the *Petites Folies Project*, which aimed to encourage people to explore the city and its events through installations designed by architects and designers.
+Participation in the Porto Design Biennale through documentation, active involvement, and research into the event’s impact. Contributed to the *Petites Folies Project*, an initiative that encouraged people to explore the city and engage with its cultural events through installations designed by architects and designers.
 
-Assisted in the design of an installation at the Faculty of Architecture, encouraging visitors to walk and shift their attention toward key infrastructures in the city—such as the Arrábida Bridge and the faculty building—drawing inspiration from the work of architect Álvaro Siza.
+Collaborated on the design of an installation at the Faculty of Architecture (2nd group), inviting visitors to explore their surroundings on foot and rediscover key architectural landmarks and urban infrastructure, including the Arrábida Bridge and the Faculty of Architecture building.

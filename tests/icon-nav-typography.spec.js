@@ -25,9 +25,9 @@ test("current menu underlines sit close to the words without overlapping another
     await page.evaluate(() => document.fonts.ready);
     if (isMobile) await page.locator(".menu-toggle").click();
     const link = page.locator('.site-nav a[aria-current="page"]');
-    const normal = await sharp(await link.screenshot()).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const normal = await sharp(await link.screenshot({ animations: "disabled" })).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     await link.evaluate(el => { el.style.background = "none"; el.style.textDecoration = "none"; });
-    const plain = await sharp(await link.screenshot()).removeAlpha().raw().toBuffer();
+    const plain = await sharp(await link.screenshot({ animations: "disabled" })).removeAlpha().raw().toBuffer();
     let lastTextRow = -1;
     const underlineRows = [];
     for (let y = 0; y < normal.info.height; y++) {
@@ -48,29 +48,17 @@ test("current menu underlines sit close to the words without overlapping another
   }
 });
 
-test("phone project text stays justified without excessively wide word gaps", async ({ page, isMobile }) => {
-  test.skip(!isMobile, "Narrow columns need the extra word breaks");
-  for (const project of projects) {
-    await page.goto(project.url);
+test("project and About text stay justified without automatic hyphenation", async ({ page }) => {
+  for (const url of ["/about/", ...projects.map(project => project.url)]) {
+    await page.goto(url);
     await page.evaluate(() => document.fonts.ready);
-    const paragraphs = await page.locator(".project-text p").evaluateAll(ps => ps.map(p => {
-      const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
-      const gaps = [];
-      let node;
-      while ((node = walker.nextNode())) {
-        for (let i = 0; i < node.length; i++) {
-          if (node.data[i] !== " ") continue;
-          const range = document.createRange();
-          range.setStart(node, i);
-          range.setEnd(node, i + 1);
-          gaps.push(range.getBoundingClientRect().width);
-        }
-      }
-      return { align: getComputedStyle(p).textAlign, font: parseFloat(getComputedStyle(p).fontSize), maxGap: Math.max(...gaps) };
+    const paragraphs = await page.locator(".project-text p, .about__bio p").evaluateAll(ps => ps.map(p => {
+      return { align: getComputedStyle(p).textAlign, hyphens: getComputedStyle(p).hyphens, text: p.textContent };
     }));
     for (const paragraph of paragraphs) {
-      expect(paragraph.align, project.url).toBe("justify");
-      expect(paragraph.maxGap, project.url).toBeLessThanOrEqual(paragraph.font * 0.9);
+      expect(paragraph.align, url).toBe("justify");
+      expect(paragraph.hyphens, url).toBe("none");
+      expect(paragraph.text, url).not.toContain("\u00ad");
     }
   }
 });

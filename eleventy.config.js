@@ -4,7 +4,6 @@ import YAML from "yaml";
 import markdownIt from "markdown-it";
 import Image, { generateHTML } from "@11ty/eleventy-img";
 import { researchCV } from "./scripts/research-cv.mjs";
-import { hyphenatedProse } from "./scripts/hyphenated-prose.mjs";
 
 // Widths that the image pipeline makes for each photo. The largest width
 // serves high-resolution desktop screens; smaller ones serve phones.
@@ -71,7 +70,6 @@ export default function (eleventyConfig) {
   // Inline Markdown, for short strings in data files (for example the CV).
   eleventyConfig.addFilter("md", (str) => (str ? md.renderInline(String(str)) : ""));
   eleventyConfig.addFilter("researchCV", researchCV);
-  eleventyConfig.addFilter("hyphenatedProse", hyphenatedProse);
   eleventyConfig.addFilter("absoluteUrl", (url, base) => new URL(url, base).href);
   // Inline an SVG file from src/assets/img/, hidden from screen readers.
   eleventyConfig.addFilter("svg", (name) => {
