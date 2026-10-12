@@ -50,6 +50,8 @@ publications:
     summary: A report on the renewal of housing cooperatives in Portugal and the challenges of financing, access to land and public support. Marta Maçães Viana contributes research insights on the cooperatives that remain active and the potential of European policy to support the sector.
     citation: "Relvas, Rafaela Burd. “Contra o ‘pessimismo’ e o ‘engano’, as cooperativas renascem e resistem.” PUBLICO, 36th anniversary, A Minha Casa, 5 March 2026. Photography by Nuno Ferreira Santos; expert commentary by Marta Maçães Viana."
     pdf: /assets/research/papers/publico-2026-anniversary-cooperatives.pdf
+    url: https://www.publico.pt/2026/03/05/economia/noticia/pessimismo-engano-cooperativas-renascem-resistem-2166467
+    url_label: Read at PUBLICO
   - id: full-scale-thesis
     year: 2022
     kind: Master’s thesis
@@ -160,25 +162,8 @@ themes:
           image: /assets/research/publico-36-anniversary-cover.png
           alt: PUBLICO’s 36th-anniversary front page dated 5 March 2026, with colourful drawings of houses by schoolchildren.
       caption: EURAU 2026 · PUBLICO
-  - id: full-scale
-    number: "02"
-    title: Architecture at 1:1
-    nav_label: Architecture devices
-    description: Full-scale experimentation, communication and shared public space.
-    thumbnail:
-      image: /portfolio/petites-folies/P2_Capa.jpg
-      alt: Visitors using the blue steel Petites Folies installation among trees beside a white building in Porto.
-      caption: Petites Folies · Photograph by Alexander Bogorodskiy
-  - id: politics
-    number: "03"
-    title: Politics
-    description: Democratic participation, political representation and equality.
-    thumbnail:
-      image: /assets/research/eu-voto-cover.jpeg
-      alt: Eu Voto cover for “A paridade não se esgota nas listas”, with Marta Maçães Viana’s portrait on a purple background.
-      caption: Eu Voto · Eu voto, eu opino
   - id: conferences
-    number: "04"
+    number: "02"
     title: Conferences
     description: Conference presentations and contributions to architectural and housing research.
     thumbnail:
@@ -200,6 +185,23 @@ themes:
           original: true
           alt: ENHR logo with the full name European Network for Housing Research in red beneath grey letters.
       caption: Conferences & online seminars · 2026
+  - id: full-scale
+    number: "03"
+    title: Architecture at 1:1
+    nav_label: Architecture devices
+    description: Full-scale experimentation, communication and shared public space.
+    thumbnail:
+      image: /portfolio/petites-folies/P2_Capa.jpg
+      alt: Visitors using the blue steel Petites Folies installation among trees beside a white building in Porto.
+      caption: Petites Folies · Photograph by Alexander Bogorodskiy
+  - id: politics
+    number: "04"
+    title: Politics
+    description: Democratic participation, political representation and equality.
+    thumbnail:
+      image: /assets/research/eu-voto-cover.jpeg
+      alt: Eu Voto cover for “A paridade não se esgota nas listas”, with Marta Maçães Viana’s portrait on a purple background.
+      caption: Eu Voto · Eu voto, eu opino
   - id: teaching
     number: "05"
     title: Teaching
