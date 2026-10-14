@@ -4,13 +4,14 @@
   <article class="research-conference">
     <p class="research-year">{{ conference.year | escape }}</p>
     <div>
-      <h3{% if conference.title_lang %} lang="{{ conference.title_lang | escape }}"{% endif %}>{{ conference.title | escape }}</h3>
+      <h3{% if conference.title_lang %} lang="{{ conference.title_lang | escape }}"{% endif %}>{% if conference.url %}<a href="{{ conference.url | escape }}">{{ conference.title | escape }}</a>{% else %}{{ conference.title | escape }}{% endif %}</h3>
       {% if conference.venue %}<p class="research-venue">{{ conference.venue | escape }}</p>{% endif %}
       {% if conference.organizer %}<p class="research-venue">Organized by {{ conference.organizer | escape }}</p>{% endif %}
       <p>{{ conference.role | escape }}{% if conference.date %} · {{ conference.date | escape }}{% endif %}</p>
       {% if conference.work %}<p class="research-meta"{% if conference.work_lang %} lang="{{ conference.work_lang | escape }}"{% endif %}>{{ conference.work | escape }}{% if conference.authors %} · {{ conference.authors | escape }}{% endif %}</p>{% endif %}
       {% if conference.note %}<p class="research-meta">{{ conference.note | escape }}</p>{% endif %}
       {% if conference.pdf %}<a href="{{ conference.pdf | escape }}">Conference paper →</a>{% endif %}
+      {% if conference.url %}<a href="{{ conference.url | escape }}">{{ conference.url_label | default: "Repository" | escape }} →</a>{% endif %}
     </div>
   </article>
   {% endfor %}

@@ -15,7 +15,7 @@ export function researchCV(cv, research) {
   }));
   const conferences = (research.conferences ?? []).map(item => ({
     years: item.date ?? String(item.year),
-    text: `${link(item.title, item.pdf)}. ${escape(item.venue)}${item.organizer ? ` · ${escape(item.organizer)}` : ""}.`,
+    text: `${link(item.title, item.url ?? item.pdf)}. ${escape(item.venue)}${item.organizer ? ` · ${escape(item.organizer)}` : ""}.`,
     note: [item.role, item.work, item.note].filter(Boolean).map(escape).join(" · "),
   }));
   const sections = [];
